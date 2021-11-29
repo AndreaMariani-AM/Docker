@@ -1,7 +1,5 @@
 FROM continuumio/miniconda3
 
-LABEL "Andrea Mariani" andrea.mariani@ieo.it
-
 RUN apt-get update && \
 	apt-get install -y samtools=1.10
 
