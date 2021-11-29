@@ -1,0 +1,5 @@
+# Stupid macOs stuff
+.DS_Store
+
+# Ignore singularity images to avoid taking up to much space
+*.sif
