@@ -72,7 +72,7 @@ docker rmi andreamariani/my_image:latest
 ### Singularity
 
 ```
-singularity pull output_file docker://user/image:tag
+singularity pull output_file docker:/user/image:tag
 ```
 `pull` is the command, `output_file` sets the name of the file and `docker` is to specify the type of image i'm downloading, other wise i'll look at a singularity repo. 
 I probabily need to create a docker hub to find the container and pull it with singularity.
