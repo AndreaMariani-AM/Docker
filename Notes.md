@@ -1,3 +1,5 @@
+# Notes on Docker and Singularity
+
 * This is a file that contains notes on building Docker images and so on. The idea is to use Docker to "easily" build an image that's 100% reproducible
 and the use singularity to pull it and use it in the HPC. For now i'll follow Arnaud tutorial here: https://web.microsoftstream.com/video/6bd1f122-29f5-4844-9c02-3fb4d5a7aa22 and then
 i'll update it with more specific softwares i want to use for our pipelines.
@@ -6,7 +8,7 @@ i'll update it with more specific softwares i want to use for our pipelines.
 
 * Singularity doesn't allow you to become administrator but uses see groups (or sea groups, dunno tbh. It's just the name of ieo5776 type of user). I can download the docker image through singularity
 
-# Docker file
+## Docker file
 
 A Dockerfile is a file that explain how we want to build the image.
 
@@ -24,9 +26,9 @@ When i rebuild the image, docker cheks if something is new or not, inf nothing;s
 **note** that when i add something new, like a pakckage it's better if i add it at the end, otherwise when docker encounters something new, it'll build the image from scratch, from that point onward.
 
 
-# Terminal CMDs for Docker and Singularity
+## Terminal CMDs for Docker and Singularity
 
-## Docker
+### Docker
 ```
 docker build -t mytag .
 ```
@@ -42,7 +44,7 @@ docker run --rm -ti docker_image software
 ```
 This is to access an image, -ti is for an interactive session. 
 
-* To push an image to docker hub
+#### To push an image to docker hub
 
 ```
 docker login (will be prompted for user and pass)
@@ -67,7 +69,7 @@ docker rmi andreamariani/my_image:latest
 `rmi` stand for remove image, to delete the duplicate.
 
 
-## Singularity
+### Singularity
 
 ```
 singularity pull output_file docker://user/image:tag
