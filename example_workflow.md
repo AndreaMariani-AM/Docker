@@ -40,7 +40,12 @@ docker rmi tagged/image
 * Once the docker image is hosted on docker hub i can pull it from the cluster with singularity with 
 
 ```
-singularity pull name_of_image.sif docker:/username/image:tag
+singularity pull name_of_image.sif docker://username/image:tag
 ```
 
 This is a fully functional image that can be used for various stuff, including snakemake pipelines.
+
+
+# Alternative Way
+
+* The the `building-script.sh` i can tag the image while building it. This aloows we to skip the tagging step and after login, directly push the image to create a new repo.
