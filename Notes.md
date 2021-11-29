@@ -2,9 +2,7 @@ This is a file that contains notes on building Docker images and so on. The idea
 and the use singularity to pull it and use it in the HPC. For now i'll follow Arnaud tutorial here: https://web.microsoftstream.com/video/6bd1f122-29f5-4844-9c02-3fb4d5a7aa22 and then
 i'll update it with more specific softwares i want to use for our pipelines.
 
-Docker images have to be tested on local machines and can't be created on the cluster.
-
-Docker images can be used on local machines, with singularity i can use it on the cluster. This is because using docker requires you to be root user and that can't be on the HPC (too risky).
+Docker images have to be tested on local machines and can't be created on the cluster, but with singularity i can use it on the cluster. This is because when using docker and accessing an image it'll allow you to become root user of that machine and that's NO BUENO on the HPC.
 
 # Docker file
 
