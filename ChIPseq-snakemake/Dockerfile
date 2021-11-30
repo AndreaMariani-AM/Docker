@@ -22,21 +22,21 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
 	&& /opt/miniconda2/bin/conda config --add channels bioconda
 
 # Install softwares that will be used for ChIPseq analysis
-RUN /opt/miniconda2/bin/conda install -c bioconda \
-samtools=1.10 \
-bowtie \
-macs2 \
-preseq \
-deeptools \
-multiqc \
-samblaster \
-wiggletools \
-pysam \
-bedops \
-r-spp \
-ucsc-bedgraphtobigwig \
-fastqc \
-picard
+# RUN /opt/miniconda2/bin/conda install -c bioconda \
+# samtools=1.10 \
+# bowtie \
+# macs2 \
+# preseq \
+# deeptools \
+# multiqc \
+# samblaster \
+# wiggletools \
+# pysam \
+# bedops \
+# r-spp \
+# ucsc-bedgraphtobigwig \
+# fastqc \
+# picard
 
 # I have to install fastp manually 'cause bioconda won't install the latest version
 RUN wget http://opengene.org/fastp/fastp \
