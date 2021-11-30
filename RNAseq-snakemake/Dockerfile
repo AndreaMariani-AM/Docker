@@ -11,20 +11,19 @@ RUN apt-get update \
 	libudunits2-dev \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
 	gawk 
-	## remove packages in var/cache and var/lib to remove side-effects of apt-get update
 
 # Install miniconda2
 
-RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
-	&& bash Miniconda2-latest-Linux-x86_64.sh -b -p /opt/miniconda2 \
-	&& /opt/miniconda2/bin/conda config --add channels defaults \
-	&& /opt/miniconda2/bin/conda config --add channels conda-forge \
-	&& /opt/miniconda2/bin/conda config --add channels bioconda
+RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+	&& bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3 \
+	&& /opt/miniconda3/bin/conda config --add channels defaults \
+	&& /opt/miniconda3/bin/conda config --add channels conda-forge \
+	&& /opt/miniconda3/bin/conda config --add channels bioconda
 
 # Install softwares that will be used for ChIPseq analysis
-RUN /opt/miniconda2/bin/conda install -c bioconda \
-samtools=1.10 
-# bowtie \
+RUN /opt/miniconda3/bin/conda install -c bioconda \
+samtools=1.10 \
+bowtie 
 # macs2 \
 # preseq \
 # deeptools 
@@ -39,4 +38,4 @@ samtools=1.10
 # picard
 
 # Update path
-ENV PATH "/opt/miniconda2/bin:$PATH"
+ENV PATH "/opt/miniconda3/bin:$PATH"

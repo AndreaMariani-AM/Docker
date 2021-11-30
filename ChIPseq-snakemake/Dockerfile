@@ -11,7 +11,6 @@ RUN apt-get update \
 	libudunits2-dev \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
 	gawk 
-	## remove packages in var/cache and var/lib to remove side-effects of apt-get update
 
 # Install miniconda2
 
@@ -46,28 +45,31 @@ RUN wget http://opengene.org/fastp/fastp \
 && chmod a+x ./fastp \
 && mv ./fastp /usr/local/bin
 
-# Bioconductor packages
-RUN R --slave -e "BiocManager::install(c( \
-## slave tag is to make R run as quietly as possbile when it's a subprocess
-## "e" Use expression as an input line, has to be quoted
-        'org.Mm.eg.db', \
-        'org.Hs.eg.db', \
-        'TxDb.Mmusculus.UCSC.mm9.knownGene', \
-        'TxDb.Mmusculus.UCSC.mm10.knownGene', \
-        'TxDb.Hsapiens.UCSC.hg19.knownGene', \
-        'TxDb.Hsapiens.UCSC.hg18.knownGene', \
-        'ChIPseeker'))"
+# # Bioconductor packages
+# RUN R --slave -e "BiocManager::install(c( \
+# ## slave tag is to make R run as quietly as possbile when it's a subprocess
+# ## "e" Use expression as an input line, has to be quoted
+#         'org.Mm.eg.db', \
+#         'org.Hs.eg.db', \
+#         'TxDb.Mmusculus.UCSC.mm9.knownGene', \
+#         'TxDb.Mmusculus.UCSC.mm10.knownGene', \
+#         'TxDb.Hsapiens.UCSC.hg19.knownGene', \
+#         'TxDb.Hsapiens.UCSC.hg18.knownGene', \
+#         'ChIPseeker'))"
 
 
 
-# Cran packages
-RUN R --slave -e 'install.packages(c( \
-        "data.table", \
-        "ggplot2", \
-        "RColorBrewer", \
-        "devtools", \
-        "spp"), \
-        repos="https://cloud.r-project.org/")'
+# # Cran packages
+# RUN R --slave -e 'install.packages(c( \
+#         "data.table", \
+#         "ggplot2", \
+#         "RColorBrewer", \
+#         "devtools", \
+#         "spp"), \
+#         repos="https://cloud.r-project.org/")'
+
+# Installing Cran and Biocnoductor packages
+
 
 # Update path for miniconda2 and fastp
 ENV PATH "/opt/miniconda2/bin:$PATH"
