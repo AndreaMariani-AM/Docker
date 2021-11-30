@@ -1,6 +1,6 @@
 #!/bin/bash
 
-# This is a small script to build the Dcoker image
+# This is a small script to build the Docker image
 
 #set image version
 IMAGE_VERSION=$(date "+%m%d%y")
