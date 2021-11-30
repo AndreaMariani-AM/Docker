@@ -31,10 +31,10 @@ preseq \
 # deeptools \
 multiqc \
 samblaster \
-wiggletools
+wiggletools \
 # pysam
-# bedops \
-# r-spp \
+bedops \
+r-spp
 # ucsc-bedgraphtobigwig \
 # fastqc \
 # picard
