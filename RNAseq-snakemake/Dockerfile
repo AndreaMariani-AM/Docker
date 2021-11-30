@@ -23,7 +23,7 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
 
 # Install softwares that will be used for ChIPseq analysis
 RUN /opt/miniconda2/bin/conda install -c bioconda \
-samtools=1.10 \
+samtools=1.10
 # bowtie \
 # macs2 \
 # preseq \
