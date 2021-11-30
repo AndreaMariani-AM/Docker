@@ -16,6 +16,7 @@ RUN apt-get update \
 # Install miniconda2
 
 RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
+## -b doesn't modify PATH to shell scripts. -p path to installation
 	&& bash Miniconda2-latest-Linux-x86_64.sh -b -p /opt/miniconda2 \
 	&& /opt/miniconda2/bin/conda config --add channels defaults \
 	&& /opt/miniconda2/bin/conda config --add channels conda-forge \
