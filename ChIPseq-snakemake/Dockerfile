@@ -12,14 +12,13 @@ RUN apt-get update \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
 	gawk
 
-# Install miniconda2
+# Install miniconda3
 
-RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
-## -b doesn't modify PATH to shell scripts. -p path to installation
-	&& bash Miniconda2-latest-Linux-x86_64.sh -b -p /opt/miniconda2 \
-	&& /opt/miniconda2/bin/conda config --add channels defaults \
-	&& /opt/miniconda2/bin/conda config --add channels conda-forge \
-	&& /opt/miniconda2/bin/conda config --add channels bioconda
+RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+	&& bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3 \
+	&& /opt/miniconda3/bin/conda config --add channels defaults \
+	&& /opt/miniconda3/bin/conda config --add channels conda-forge \
+	&& /opt/miniconda3/bin/conda config --add channels bioconda
 
 
 # Install softwares that will be used for ChIPseq analysis
@@ -39,11 +38,11 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
 # fastqc \
 # picard
 
-# I have to install fastp manually 'cause bioconda won't install the latest version
-RUN wget http://opengene.org/fastp/fastp \
-## making it executable, "a" means all users access to the file will be change, "x" who has access can execute it/search for directoris.
-&& chmod a+x ./fastp \
-&& mv ./fastp /usr/local/bin
+# # I have to install fastp manually 'cause bioconda won't install the latest version
+# RUN wget http://opengene.org/fastp/fastp \
+# ## making it executable, "a" means all users access to the file will be change, "x" who has access can execute it/search for directoris.
+# && chmod a+x ./fastp \
+# && mv ./fastp /usr/local/bin
 
 # # Bioconductor packages
 # RUN R --slave -e "BiocManager::install(c( \
@@ -74,7 +73,7 @@ COPY *.R /packages_script/
 RUN Rscript /packages_script/install_packages_bioconductor.R
 RUN Rscript /packages_script/install_packages_cran.R
 
-# Update path for miniconda2 and fastp
-ENV PATH "/opt/miniconda2/bin:$PATH"
+# Update path for miniconda3 and fastp
+ENV PATH "/opt/miniconda3/bin:$PATH"
 ENV PATH "/usr/local/bin:$PATH"
 

@@ -12,7 +12,7 @@ RUN apt-get update \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
 	gawk 
 
-# Install miniconda2
+# Install miniconda3
 
 RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 	&& bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3 \
