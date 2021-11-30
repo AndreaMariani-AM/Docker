@@ -19,7 +19,7 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 	&& bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3 \
 	&& /opt/miniconda3/bin/conda config --add channels defaults \
 	&& /opt/miniconda3/bin/conda config --add channels conda-forge \
-	&& /opt/miniconda3/bin/conda config --add channles bioconda
+	&& /opt/miniconda3/bin/conda config --add channels bioconda
 
 # Install softwares that will be used for ChIPseq analysis
 RUN /opt/miniconda3/bin/conda install -c bioconda \
