@@ -13,7 +13,7 @@ RUN apt-get update \
 	gawk 
 	## remove packages in var/cache and var/lib to remove side-effects of apt-get update
 
-# Install miniconda@
+# Install miniconda2
 
 RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
 	&& bash Miniconda2-latest-Linux-x86_64.sh -b -p /opt/miniconda2 \
@@ -26,9 +26,8 @@ RUN /opt/miniconda2/bin/conda install -c bioconda \
 samtools=1.10 \
 bowtie \
 macs2 \
-deeptools \
-picard \
 preseq \
+deeptools \
 multiqc \
 samblaster \
 wiggletools \
@@ -36,7 +35,8 @@ pysam \
 bedops \
 r-spp \
 ucsc-bedgraphtobigwig \
-fastqc 
+fastqc \
+picard
 
 # I have to install fastp manually 'cause bioconda won't install the latest version
 RUN wget http://opengene.org/fastp/fastp \
