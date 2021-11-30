@@ -15,8 +15,8 @@ RUN apt-get update \
 
 # Install miniconda2
 
-RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-MacOSX-x86_64.sh \
-	&& bash Miniconda3-latest-MacOSX-x86_64.sh -b -p /opt/miniconda3 \
+RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
+	&& bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3 \
 	&& /opt/miniconda3/bin/conda config --add channels defaults \
 	&& /opt/miniconda3/bin/conda config --add channels conda-forge \
 	&& /opt/miniconda3/bin/conda config --add channels bioconda
