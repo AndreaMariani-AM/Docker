@@ -54,10 +54,9 @@ RUN R --slave -e "BiocManager::install(c( \
         'TxDb.Mmusculus.UCSC.mm10.knownGene', \
         'TxDb.Hsapiens.UCSC.hg19.knownGene', \
         'TxDb.Hsapiens.UCSC.hg18.knownGene', \
-        'ChIPseeker'))" 
+        'ChIPseeker'))"
 
-## slave tag is to make R run as quietly as possbile when it's a subprocess
-## "e" Use expression as an input line, has to be quoted
+
 
 # Cran packages
 RUN R --slave -e 'install.packages(c( \

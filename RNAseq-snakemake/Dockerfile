@@ -1,0 +1,39 @@
+FROM bioconductor/bioconductor_docker
+
+RUN apt-get update \
+	&& apt-get install -y \
+	## transfer data from or to servers
+	curl \
+	## non interactive network downloader, to download files
+	wget \
+	libboost-all-dev \
+	## Boost C++ Libraries development files 
+	libudunits2-dev \
+	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
+	gawk 
+	## remove packages in var/cache and var/lib to remove side-effects of apt-get update
+
+# Install miniconda2
+
+RUN wget https://repo.continuum.io/miniconda/Miniconda2-latest-Linux-x86_64.sh \
+	&& bash Miniconda2-latest-Linux-x86_64.sh -b -p /opt/miniconda2 \
+	&& /opt/miniconda2/bin/conda config --add channels defaults \
+	&& /opt/miniconda2/bin/conda config --add channels conda-forge \
+	&& /opt/miniconda2/bin/conda config --add channels bioconda
+
+# Install softwares that will be used for ChIPseq analysis
+# RUN /opt/miniconda2/bin/conda install -c bioconda \
+# samtools=1.10 \
+# bowtie \
+# macs2 \
+# preseq \
+# deeptools \
+# multiqc \
+# samblaster \
+# wiggletools \
+# pysam \
+# bedops \
+# r-spp \
+# ucsc-bedgraphtobigwig \
+# fastqc \
+# picard
