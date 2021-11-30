@@ -6,4 +6,4 @@ install.packages(c(
         # "RColorBrewer",
         # "devtools",
         # "spp"),
-        repos="https://cloud.r-project.org/")
+        repos="https://cloud.r-project.org/"))
