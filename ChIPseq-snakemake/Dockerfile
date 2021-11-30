@@ -10,7 +10,7 @@ RUN apt-get update \
 	## Boost C++ Libraries development files 
 	libudunits2-dev \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
-	gawk 
+	gawk
 
 # Install miniconda2
 
@@ -69,7 +69,10 @@ RUN wget http://opengene.org/fastp/fastp \
 #         repos="https://cloud.r-project.org/")'
 
 # Installing Cran and Biocnoductor packages
-
+RUN mkdir /packages_script
+COPY *.R /packages_script/
+RUN Rscript /packages_script/install_packages_bioconductor.R
+RUN Rscript /packages_script/install_packages_cran.R
 
 # Update path for miniconda2 and fastp
 ENV PATH "/opt/miniconda2/bin:$PATH"
