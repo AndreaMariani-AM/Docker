@@ -48,13 +48,16 @@ RUN wget http://opengene.org/fastp/fastp \
 RUN R --slave -e "BiocManager::install(c( \
 ## slave tag is to make R run as quietly as possbile when it's a subprocess
 ## "e" Use expression as an input line, has to be quoted
-		'org.Mm.eg.db', \
-		'org.Hs.eg.db', \
-		'TxDb.Mmusculus.UCSC.mm9.knownGene', \
+        'org.Mm.eg.db', \
+        'org.Hs.eg.db', \
+        'TxDb.Mmusculus.UCSC.mm9.knownGene', \
         'TxDb.Mmusculus.UCSC.mm10.knownGene', \
         'TxDb.Hsapiens.UCSC.hg19.knownGene', \
         'TxDb.Hsapiens.UCSC.hg18.knownGene', \
-		'ChIPSeeker'))"
+        'ChIPseeker'))" 
+
+## slave tag is to make R run as quietly as possbile when it's a subprocess
+## "e" Use expression as an input line, has to be quoted
 
 # Cran packages
 RUN R --slave -e 'install.packages(c( \
