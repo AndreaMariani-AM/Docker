@@ -33,7 +33,6 @@ To remove the tagged image
 
 ```
 docker rmi tagged/image
-
 ``` 
 
 
