@@ -21,7 +21,7 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 	&& /opt/miniconda3/bin/conda config --add channels bioconda
 
 # Install softwares that will be used for ChIPseq analysis
-# WORKS: smatools, bowtie, macs2, preseq, multiqc, samblaster
+# WORKS: smatools, bowtie, macs2, preseq, multiqc, samblaster, wiggletools, bedops
 # FUCK YOU packages: deeptools, pysam
 RUN /opt/miniconda3/bin/conda install -c bioconda \
 # samtools=1.10 \
@@ -32,9 +32,9 @@ RUN /opt/miniconda3/bin/conda install -c bioconda \
 # multiqc \
 # samblaster \
 # wiggletools \
-# pysam
-bedops
-# r-spp
+# pysam \
+# bedops \
+r-spp
 # ucsc-bedgraphtobigwig \
 # fastqc \
 # picard
