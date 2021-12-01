@@ -23,7 +23,7 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 	&& /opt/miniconda3/bin/conda config --add channels bioconda \
 	&& /opt/miniconda3/bin/conda config --add channels conda-forge
 
-RUN pip3 install deeptools pysam \
+RUN pip3 install --install-option="--prefix=/usr/local/bin" deeptools pysam \
 	&& chmod a+x /usr/local/bin/deeptools \
 	&& chmod a+x /usr/local/bin/pysam
 
