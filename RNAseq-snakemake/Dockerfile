@@ -20,7 +20,8 @@ RUN apt-get update \
 RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 	&& bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3 \
 	&& /opt/miniconda3/bin/conda config --add channels defaults \
-	&& /opt/miniconda3/bin/conda config --add channels bioconda
+	&& /opt/miniconda3/bin/conda config --add channels bioconda \
+	&& /opt/miniconda3/bin/conda config --add channels conda-forge
 
 # RUN pip3 install deeptools \
 # 	&& pip3 show deeptools \
