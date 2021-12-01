@@ -48,3 +48,8 @@ This is a fully functional image that can be used for various stuff, including s
 # Alternative Way
 
 * The the `building-script.sh` i can tag the image while building it. This allows me to skip the tagging step and after login, directly push the image to create a new repo.
+
+
+# Interactive way
+
+* This is probably the smartest solution, aka opening a container and working directly in it to debug softwares incompatibilities.
