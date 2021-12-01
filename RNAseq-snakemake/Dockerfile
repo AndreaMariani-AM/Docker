@@ -22,8 +22,8 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 	&& /opt/miniconda3/bin/conda config --add channels defaults \
 	&& /opt/miniconda3/bin/conda config --add channels bioconda
 
-RUN	pip install --root /usr/local/bindeeptools \
-	&& chmod a+x /usr/local/bindeeptools
+RUN	pip3 install --root /usr/local/bin deeptools \
+	&& chmod a+x /usr/local/bin/deeptools
 # Install softwares that will be used for ChIPseq analysis.
 # FUCK YOU packages: deeptools, pysam, r-spp(this one don't know if it just runs super long or doens't work)
 # RUN /opt/miniconda3/bin/conda install -c bioconda \
