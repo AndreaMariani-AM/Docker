@@ -13,6 +13,8 @@ RUN apt-get update \
 	gawk 
 
 # Install miniconda3
+# i changed the order of channels priority, before was defaults conda-forge and the bioconda but the officail website recommend this one  
+#https://bioconda.github.io/user/install.html#set-up-channels
 
 RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 	&& bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3 \
@@ -26,8 +28,8 @@ RUN /opt/miniconda3/bin/conda install -c bioconda \
 samtools=1.10 \
 bowtie \
 macs2 \
-preseq \
-deeptools
+preseq
+# deeptools \
 # multiqc \
 # samblaster \
 # wiggletools \
@@ -37,6 +39,9 @@ deeptools
 # ucsc-bedgraphtobigwig \
 # fastqc \
 # picard
+
+RUN /opt/miniconda3/bin/conda install -c bioconda \
+deeptools
 
 # Update path
 ENV PATH "/opt/miniconda3/bin:$PATH"
