@@ -27,11 +27,11 @@ RUN /opt/miniconda3/bin/conda install -c bioconda \
 # bowtie \
 # macs2 \
 # preseq \
-deeptools 
+deeptools \
 # multiqc \
 # samblaster \
 # wiggletools \
-# pysam \
+pysam \
 # bedops \
 # r-spp \
 # ucsc-bedgraphtobigwig \
