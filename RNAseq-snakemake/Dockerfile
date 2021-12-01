@@ -22,7 +22,7 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 	&& /opt/miniconda3/bin/conda config --add channels defaults \
 	&& /opt/miniconda3/bin/conda config --add channels bioconda
 
-RUN	pip3 install --root /usr/local/bin deeptools \
+RUN	pip3 install deeptools \
 	&& pip3 show deeptools \
 	&& chmod a+x /usr/local/bin/deeptools
 # Install softwares that will be used for ChIPseq analysis.
