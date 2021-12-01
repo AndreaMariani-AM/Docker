@@ -10,7 +10,8 @@ RUN apt-get update \
 	## Boost C++ Libraries development files 
 	libudunits2-dev \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
-	gawk 
+	gawk \
+	python3-pip
 
 # Install miniconda3
 # i changed the order of channels priority, before was defaults conda-forge and the bioconda but the officail website recommend this one  
@@ -21,15 +22,17 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 	&& /opt/miniconda3/bin/conda config --add channels defaults \
 	&& /opt/miniconda3/bin/conda config --add channels bioconda
 
-
+RUN	pip install deeptools \
+	&& chmod a+x ./deeptools \
+	&& mv ./deeptools /usr/local/bin
 # Install softwares that will be used for ChIPseq analysis.
 # FUCK YOU packages: deeptools, pysam, r-spp(this one don't know if it just runs super long or doens't work)
-RUN /opt/miniconda3/bin/conda install -c bioconda \
-samtools=1.9 \
+# RUN /opt/miniconda3/bin/conda install -c bioconda \
+# samtools=1.9 \
 # bowtie \
 # macs2 \
 # preseq \
-deeptools
+# deeptools \
 # multiqc \
 # samblaster \
 # wiggletools \
@@ -41,5 +44,6 @@ deeptools
 # picard
 
 
+
 # Update path
-ENV PATH "/opt/miniconda3/bin:$PATH"
+# ENV PATH "/opt/miniconda3/bin:$PATH"
