@@ -31,9 +31,9 @@ RUN /opt/miniconda3/bin/conda install -c bioconda \
 # multiqc \
 # samblaster \
 # wiggletools \
-pysam
+# pysam \
 # bedops \
-# r-spp \
+r-spp
 # ucsc-bedgraphtobigwig \
 # fastqc \
 # picard
