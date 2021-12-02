@@ -36,7 +36,7 @@ samtools=1.10 \
 # bowtie \
 # macs2 \
 # preseq \
-deeptools \
+deeptools
 # multiqc \
 # samblaster \
 # wiggletools \
