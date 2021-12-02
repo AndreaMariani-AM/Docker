@@ -17,8 +17,8 @@ RUN apt-get update \
 # i changed the order of channels priority, before was defaults conda-forge and the bioconda but the officail website recommend this one  
 #https://bioconda.github.io/user/install.html#set-up-channels
 
-RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
-	&& bash Miniconda3-latest-Linux-x86_64.sh -b -p /opt/miniconda3 \
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.10.3-Linux-x86_64.sh \
+	&& bash Miniconda3-py37_4.10.3-Linux-x86_64.sh -b -p /opt/miniconda3 \
 	&& /opt/miniconda3/bin/conda config --add channels defaults \
 	&& /opt/miniconda3/bin/conda config --add channels bioconda \
 	&& /opt/miniconda3/bin/conda config --add channels conda-forge
@@ -32,9 +32,9 @@ RUN wget https://repo.continuum.io/miniconda/Miniconda3-latest-Linux-x86_64.sh \
 RUN /opt/miniconda3/bin/conda install -c bioconda \
 samtools=1.10 \
 bowtie \
-macs2 \
-preseq
-# deeptools \
+# macs2 \
+# preseq \
+deeptools
 # multiqc \
 # samblaster \
 # wiggletools \
