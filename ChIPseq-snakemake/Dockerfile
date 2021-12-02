@@ -12,7 +12,6 @@ RUN apt-get update \
 	libudunits2-dev \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
 	gawk \
-	python3-pip
 
 # Install miniconda3
 # i changed the order of channels priority, before was defaults conda-forge and the bioconda but the officail website recommend this one  
