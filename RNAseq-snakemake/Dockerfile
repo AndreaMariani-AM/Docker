@@ -26,6 +26,7 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64
 
 
 # Installing Cran and Biocnoductor packages
+# spp doesn't work, all bioconductors don't work
 RUN mkdir /packages_script
 COPY *.R /packages_script/
 RUN Rscript /packages_script/install_packages_bioconductor.R
