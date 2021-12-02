@@ -25,11 +25,22 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64
 	&& /opt/miniconda3/bin/conda config --add channels conda-forge
 
 
+RUN R --slave -e "BiocManager::install(c( \
+		'Rsamtools'))"
+        # 'org.Mm.eg.db', \
+        # 'org.Hs.eg.db', \
+        # 'TxDb.Mmusculus.UCSC.mm9.knownGene', \
+        # 'TxDb.Mmusculus.UCSC.mm10.knownGene', \
+        # 'TxDb.Hsapiens.UCSC.hg19.knownGene', \
+        # 'TxDb.Hsapiens.UCSC.hg18.knownGene', \
+        # 'ChIPseeker'))" 
+
+
 # Installing Cran and Biocnoductor packages
 # spp doesn't work, all bioconductors don't work
-RUN mkdir /packages_script
-COPY *.R /packages_script/
-RUN Rscript /packages_script/install_packages_bioconductor.R
+# RUN mkdir /packages_script
+# COPY *.R /packages_script/
+# RUN Rscript /packages_script/install_packages_bioconductor.R
 # RUN Rscript /packages_script/install_packages_cran.R
 
 # Update path for miniconda3 and fastp
