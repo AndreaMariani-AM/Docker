@@ -11,7 +11,7 @@ RUN apt-get update \
 	## Boost C++ Libraries development files 
 	libudunits2-dev \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
-	gawk \
+	gawk
 
 # Install miniconda3
 # i changed the order of channels priority, before was defaults conda-forge and the bioconda but the officail website recommend this one  
