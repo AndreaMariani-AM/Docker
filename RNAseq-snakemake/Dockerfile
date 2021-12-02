@@ -26,14 +26,14 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64
 
 
 RUN R --slave -e "BiocManager::install(c( \
-		'Rsamtools'))"
         # 'org.Mm.eg.db', \
         # 'org.Hs.eg.db', \
         # 'TxDb.Mmusculus.UCSC.mm9.knownGene', \
         # 'TxDb.Mmusculus.UCSC.mm10.knownGene', \
         # 'TxDb.Hsapiens.UCSC.hg19.knownGene', \
         # 'TxDb.Hsapiens.UCSC.hg18.knownGene', \
-        # 'ChIPseeker'))" 
+        # 'ChIPseeker', \
+		'Rsamtools'))" 
 
 
 # Installing Cran and Biocnoductor packages
