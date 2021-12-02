@@ -18,8 +18,9 @@ RUN apt-get update \
 # https://bioconda.github.io/user/install.html#set-up-channels
 # conda 4.10 w/ pythone 3.9 has conflict problems, conda 4.10 w/ python 3.7 seems to work
 
-RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.10.3-Linux-x86_64.sh \
-	&& bash Miniconda3-py37_4.10.3-Linux-x86_64.sh -b -p /opt/miniconda3 \
+RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \
+	&& bash Miniconda3-py38_4.10.3-Linux-x86_64.sh -b -p /opt/miniconda3 \
+	## /opt is the linux direcotry "reserved for the installation of add-on application software packages" aka any third party software 
 	&& /opt/miniconda3/bin/conda config --add channels defaults \
 	&& /opt/miniconda3/bin/conda config --add channels bioconda \
 	&& /opt/miniconda3/bin/conda config --add channels conda-forge
@@ -32,19 +33,19 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py37_4.10.3-Linux-x86_64
 # FUCK YOU packages: deeptools, pysam, r-spp(this one don't know if it just runs super long or doens't work)
 RUN /opt/miniconda3/bin/conda install -c bioconda \
 samtools=1.10 \
-bowtie \
-macs2 \
-preseq \
+# bowtie \
+# macs2 \
+# preseq \
 deeptools \
-multiqc \
-samblaster \
-wiggletools \
-pysam \
-bedops \
-#r-spp \
-ucsc-bedgraphtobigwig \
-fastqc \
-picard
+# multiqc \
+# samblaster \
+# wiggletools \
+# pysam \
+# bedops \
+# r-spp \
+# ucsc-bedgraphtobigwig \
+# fastqc \
+# picard
 
 
 
