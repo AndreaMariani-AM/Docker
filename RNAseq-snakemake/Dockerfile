@@ -32,8 +32,7 @@ RUN R --slave -e "BiocManager::install(c( \
         # 'TxDb.Mmusculus.UCSC.mm10.knownGene', \
         # 'TxDb.Hsapiens.UCSC.hg19.knownGene', \
         # 'TxDb.Hsapiens.UCSC.hg18.knownGene', \
-        # 'ChIPseeker', \
-		'Rsamtools'))" 
+        'ChIPseeker'))" 
 
 
 # Installing Cran and Biocnoductor packages
