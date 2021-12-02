@@ -1,5 +1,4 @@
 FROM bioconductor/bioconductor_docker
-FROM bioconductor/bioconductor_docker
 
 RUN apt-get update \
 	&& apt-get install -y \

@@ -10,8 +10,7 @@ RUN apt-get update \
 	## Boost C++ Libraries development files 
 	libudunits2-dev \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
-	gawk \
-	python3-pip
+	gawk
 
 # Install miniconda3
 # i changed the order of channels priority, before was defaults conda-forge and the bioconda but the officail website recommend this one  
@@ -25,29 +24,13 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64
 	&& /opt/miniconda3/bin/conda config --add channels bioconda \
 	&& /opt/miniconda3/bin/conda config --add channels conda-forge
 
-# RUN pip3 install deeptools pysam \
-# 	&& chmod a+x /usr/local/bin/deeptools \
-# 	&& chmod a+x /usr/local/bin/pysam
 
-# Install softwares that will be used for ChIPseq analysis.
-# FUCK YOU packages: deeptools, pysam, r-spp(this one don't know if it just runs super long or doens't work)
-RUN /opt/miniconda3/bin/conda install -c bioconda \
-samtools=1.10 \
-# bowtie \
-# macs2 \
-# preseq \
-deeptools
-# multiqc \
-# samblaster \
-# wiggletools \
-# pysam \
-# bedops \
-# r-spp \
-# ucsc-bedgraphtobigwig \
-# fastqc \
-# picard
+# Installing Cran and Biocnoductor packages
+RUN mkdir /packages_script
+COPY *.R /packages_script/
+RUN Rscript /packages_script/install_packages_bioconductor.R
+# RUN Rscript /packages_script/install_packages_cran.R
 
-
-
-# Update path
+# Update path for miniconda3 and fastp
 ENV PATH "/opt/miniconda3/bin:$PATH"
+
