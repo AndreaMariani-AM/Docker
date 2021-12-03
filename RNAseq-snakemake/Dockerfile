@@ -31,15 +31,6 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64
 	&& /opt/miniconda3/bin/conda config --add channels conda-forge
 
 
-# RUN R --slave -e "BiocManager::install(c( \
-#         # 'org.Mm.eg.db', \
-#         # 'org.Hs.eg.db', \
-#         # 'TxDb.Mmusculus.UCSC.mm9.knownGene', \
-#         # 'TxDb.Mmusculus.UCSC.mm10.knownGene', \
-#         # 'TxDb.Hsapiens.UCSC.hg19.knownGene', \
-#         # 'TxDb.Hsapiens.UCSC.hg18.knownGene', \
-#         'ChIPseeker'))" 
-
 
 ##===========================================##===========================================##
 # Installing Cran and Biocnoductor packages
