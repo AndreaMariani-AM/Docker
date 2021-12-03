@@ -1,5 +1,9 @@
 FROM bioconductor/bioconductor_docker
 
+##===========================================##===========================================##
+# Installing general purspose packages
+##===========================================##===========================================##
+
 RUN apt-get update \
 	&& apt-get install -y \
 	## transfer data from or to servers
@@ -12,10 +16,12 @@ RUN apt-get update \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
 	gawk
 
+##===========================================##===========================================##
 # Install miniconda3
-# i changed the order of channels priority, before was defaults conda-forge and the bioconda but the officail website recommend this one  
+# I changed the order of channels priority, before was defaults conda-forge and the bioconda but the officail website recommend this one  
 # https://bioconda.github.io/user/install.html#set-up-channels
-# conda 4.10 w/ pythone 3.9 has conflict problems, conda 4.10 w/ python 3.7 or 3.8 seems to work
+# conda 4.10 w/ python 3.9 has conflict problems, conda 4.10 w/ python 3.7 or 3.8 work
+##===========================================##===========================================##
 
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \
 	&& bash Miniconda3-py38_4.10.3-Linux-x86_64.sh -b -p /opt/miniconda3 \
@@ -35,14 +41,21 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64
 #         'ChIPseeker'))" 
 
 
+##===========================================##===========================================##
 # Installing Cran and Biocnoductor packages
-# spp doesn't work, all bioconductors don't work
+# spp package from Cran had a problem with Rsamtools dependency which was missing, installing
+# ChIPSkeer before that solved the problem 'caused installed Rsamtools as dependency.
+##===========================================##===========================================##
 
 RUN mkdir /install_scripts
 COPY *.R /install_scripts/
 RUN Rscript /install_scripts/install_packages_bioconductor.R
 RUN Rscript /install_scripts/install_packages_cran.R
 
+
+##===========================================##===========================================##
 # Update path for miniconda3 and fastp
+##===========================================##===========================================##
+
 ENV PATH "/opt/miniconda3/bin:$PATH"
 
