@@ -36,40 +36,40 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64
 # there might be a problem with salmon version that i need to check out later, has to be > 0.13.1
 ##===========================================##===========================================##
 
-RUN /opt/miniconda3/bin/conda install -c bioconda \
-samtools=1.10 \
-star \
-deeptools \
-multiqc \
-pysam \
-bedops \
-fastqc \
-picard \
-subread \
-rseqc \
-gffutils \
-samblaster \
-salmon
+# RUN /opt/miniconda3/bin/conda install -c bioconda \
+# samtools=1.10 \
+# star \
+# deeptools \
+# multiqc \
+# pysam \
+# bedops \
+# fastqc \
+# picard \
+# subread \
+# rseqc \
+# gffutils \
+# samblaster \
+# salmon
 
 
 ##===========================================##===========================================##
 # I have to install fastp manually 'cause bioconda won't install the latest version
 ##===========================================##===========================================##
 
-# RUN wget http://opengene.org/fastp/fastp \
-# ## making it executable, "a" means all users access to the file will be change, "x" who has access can execute it/search for directoris.
-# && chmod a+x ./fastp \
-# && mv ./fastp /usr/local/bin
+RUN wget http://opengene.org/fastp/fastp \
+## making it executable, "a" means all users access to the file will be change, "x" who has access can execute it/search for directoris.
+&& chmod a+x ./fastp \
+&& mv ./fastp /usr/local/bin
 
 
 ##===========================================##===========================================##
 # Installing Cran and Biocnoductor packages
 ##===========================================##===========================================##
 
-# RUN mkdir /install_scripts
-# COPY *.R /install_scripts/
-# RUN Rscript /install_scripts/install_packages_bioconductor.R
-# RUN Rscript /install_scripts/install_packages_cran.R
+RUN mkdir /install_scripts
+COPY *.R /install_scripts/
+RUN Rscript /install_scripts/install_packages_bioconductor.R
+#RUN Rscript /install_scripts/install_packages_cran.R
 
 
 ##===========================================##===========================================##
