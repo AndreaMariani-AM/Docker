@@ -18,7 +18,7 @@ This has to be done on a local machine 'cause on HPC, docker won't be installed 
 docker build -t name_of_the_image . 
 ```
 
-`-t` id the --tag flag and it's the name of the docker image i'm building. `.` means ofc here.
+`-t` is the --tag flag and it's the name of the docker image i'm building. `.` means ofc this directory.
 
 ## Sending the image to Docker Hub
 
@@ -35,15 +35,15 @@ You'll be prompted with username and password of your Docker Hub repo
 * Tag the container
 
 ```
-docker tag image username/image:latest
+docker tag image_name tag/image:anything
 ``` 
 
-This can be done with any tag, but i like to use as a tag my username.
+This can be done with any tag. Tags are mutable names referred to docker images, they make it easier to pull and run images and also roll out updates automatically.
 
 * Push the tagged container to the repo
 
 ```
-docker push username/image:latest
+docker push tag/image:anything
 ``` 
 
 * To remove the tagged images (if needed)
@@ -52,14 +52,14 @@ docker push username/image:latest
 docker rmi tagged/image
 ``` 
 
-They actually quite heavy (~ 8gb for ChIPseq and depending on the number of packages in it)
+They're actually quite heavy (~ 8gb for ChIPseq and depending on the number of packages in it), so when building multiple images or different versions of them it's worth to keep an eye on memory space.
 
-* Pull the image on the cluster
+* Pull the image to the cluster
 
 ```
 singularity pull name_of_image.sif docker://username/image:tag
 ```
-From any directory, pull the docker image. The command `pull` takes a docker image and create a copy as a singularity image.
+From any directory, pull the docker image. The command `pull` takes a docker image and create a copy as a singularity image. `.sif` is the extension of singularity iamges `name_of_image` can be anything and can be != from the docker image. `docker:// ` tells singularity that we're downloading a docker image, otherwise i'll search for it on singularity repos.
 
 * Notes on the workflow
 
@@ -69,7 +69,7 @@ This general workflow creates a fully functional image, however i'd advise some 
 
 * Building script
 
-Create a bash script that builds the image, it'll be called like any other script with `./script.sh`. In this script, first we create a variable that contains the day when the image is created, the building function with a couple of options, the tagging step that's skipped 'cause we add the username to the image directly here, the redirection of STDOUT and ERR to a file that can be inspected to troubleshoot the build and finally whe push the newly created image to the repo. The script looks like this.
+Create a bash script that builds the image, it'll be called like any other script with `./script.sh`. In this script, first we create a variable `IMAGE_VERSION` that contains the day when the image is created, the building function with a couple of options, the tagging step that's skipped 'cause we add the username to the image directly here, the redirection of STDOUT and ERR to a file that can be inspected to troubleshoot the build and finally whe push the newly created image to the repo. The script looks like this.
 
 ```
 IMAGE_VERSION=$(date "+%m%d%y") # this sets the version
@@ -79,15 +79,15 @@ docker push andreamariani/rnaseq_snakemake:${IMAGE_VERSION}
 
 ```
 
-`--progress=plain` it's similar to a verbose argument, but in reality extends the STDOUT that was shrinked with buildkit.
-`--no-cache` doesn't cache the build. I'd advise to use it only when building the final image or when conflicts between dependencies are spotted, se we can move around stuff and fix it.
+`--progress=plain` it's similar to a verbose argument, but in reality extends the STDOUT that was shrinked with buildkit.  
+`--no-cache` doesn't cache the build. I'd advise to use it only when building the final image or when conflicts between dependencies are spotted, se we can move around stuff and fix it.  
 `tee` allows to both write to a file (STDOUT and ERR `2>&1`) and to standard output.
 
 This is the script i'd use when building the final image, below there's commands i'd use when first testing the build. Uncomment and use those.
 
 * Dockerfile
 
-The only difference is that I write packages in different file based on either function or repo used to download them. Then, w/ `COPY` I pull them into the build. I also like to move those file in a new directory to be as tidy as possible.
+The only difference is that I write packages in different files based on either function or repo used to download them. Then, w/ `COPY` I pull them into the build. I also like to move those file in a new directory to be as tidy as possible.
 
 
 # Interactive way
