@@ -2,7 +2,7 @@
 
 This is an example workflow of what steps are needed to produce a singularity image (from a docker image) that works w/ our pipelines written in snakemake.
 
-We have to start with the building of a docker image and for this, a Dockerfile is required that has the recipe for that particular image. I like to separete packages based on their general function in different files, so it's easier to edit them. The add them to the Dockerfile the `COPY` command is what is used. The building script builds the actual image and pushes it to Docker Hub where it'll be hosted. From here the image is pulled with singularity to a location on our cluster folder and can be used from there.
+We have to start with the building of a docker image and for this, a Dockerfile is required that has the recipe for that particular image. I like to separete packages based on their general function in different files, so it's easier to edit them. The building script builds the actual image and pushes it to Docker Hub where it'll be hosted. From there, the image is pulled with singularity to a location on our cluster folder and can be used.
 
 ## Prerequisites
 
