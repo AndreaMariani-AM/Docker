@@ -14,7 +14,7 @@ RUN apt-get update \
 	## Boost C++ Libraries development files 
 	libudunits2-dev \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
-	mailutilis
+	mailutils
 	## for mail handling
 
 ##===========================================##===========================================##
