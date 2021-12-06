@@ -3,3 +3,7 @@
 
 # Ignore singularity images to avoid taking up to much space
 *.sif
+
+# Ignore log files
+*.log
+
