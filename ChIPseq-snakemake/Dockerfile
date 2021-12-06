@@ -20,7 +20,7 @@ RUN apt-get update \
 # Install miniconda3
 # I changed the order of channels priority, before was defaults conda-forge and the bioconda but the officail website recommend this one  
 # https://bioconda.github.io/user/install.html#set-up-channels
-# conda 4.10 w/ python 3.9 has conflict problems, conda 4.10 w/ python 3.7 or 3.8 work
+# conda 4.10 w/ python 3.9 has conflict problems(depptools and pysam w/ the others), conda 4.10 w/ python 3.7 or 3.8 work
 ##===========================================##===========================================##
 
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \

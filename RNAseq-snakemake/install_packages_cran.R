@@ -2,8 +2,16 @@
 
 install.packages(c(
         "data.table",
-        "ggplot2",
         "RColorBrewer",
         "devtools",
-        "spp"),
+        "tidyverse",
+        "tibble",
+        "openxlsx",
+        "msigdbr",
+        "ggforce"),
         repos="https://cloud.r-project.org/")
+
+# Devtools pkg
+
+devtools::install_github(c(
+         "VPetukhov/ggrastr"))

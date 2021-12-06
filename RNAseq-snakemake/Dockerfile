@@ -14,13 +14,14 @@ RUN apt-get update \
 	## Boost C++ Libraries development files 
 	libudunits2-dev \
 	## The UDUNITS package supports units of physical quantities (e.g., meters, seconds).
-	gawk
+	mailutilis
+	## for mail handling
 
 ##===========================================##===========================================##
 # Install miniconda3
 # I changed the order of channels priority, before was defaults conda-forge and the bioconda but the officail website recommend this one  
 # https://bioconda.github.io/user/install.html#set-up-channels
-# conda 4.10 w/ python 3.9 has conflict problems, conda 4.10 w/ python 3.7 or 3.8 work
+# conda 4.10 w/ python 3.9 has conflict problems (deeptols and pysam w/ the others), conda 4.10 w/ python 3.7 or 3.8 work
 ##===========================================##===========================================##
 
 RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \
@@ -30,12 +31,39 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64
 	&& /opt/miniconda3/bin/conda config --add channels bioconda \
 	&& /opt/miniconda3/bin/conda config --add channels conda-forge
 
+##===========================================##===========================================##
+# Install softwares that will be used for RNAseq analysis.
+# there might be a problem with salmon version that i need to check out later, has to be > 0.13.1
+##===========================================##===========================================##
+
+RUN /opt/miniconda3/bin/conda install -c bioconda \
+samtools=1.10 \
+star \
+deeptools \
+multiqc \
+pysam \
+bedops \
+fastqc \
+picard \
+subread \
+rseqc \
+gffutils \
+samblaster \
+salmon
+
+
+##===========================================##===========================================##
+# I have to install fastp manually 'cause bioconda won't install the latest version
+##===========================================##===========================================##
+
+# RUN wget http://opengene.org/fastp/fastp \
+# ## making it executable, "a" means all users access to the file will be change, "x" who has access can execute it/search for directoris.
+# && chmod a+x ./fastp \
+# && mv ./fastp /usr/local/bin
 
 
 ##===========================================##===========================================##
 # Installing Cran and Biocnoductor packages
-# spp package from Cran had a problem with Rsamtools dependency which was missing, installing
-# ChIPSkeer before that solved the problem 'caused installed Rsamtools as dependency.
 ##===========================================##===========================================##
 
 # RUN mkdir /install_scripts
@@ -49,4 +77,5 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64
 ##===========================================##===========================================##
 
 # ENV PATH "/opt/miniconda3/bin:$PATH"
+# ENV PATH "/usr/local/bin:$PATH"
 
