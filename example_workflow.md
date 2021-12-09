@@ -69,18 +69,18 @@ This general workflow creates a fully functional image, however i'd advise some 
 
 * Building script
 
-Create a bash script that builds the image, it'll be called like any other script with `./script.sh`. In this script, first we create a variable `IMAGE_VERSION` that contains the day when the image is created, the building function with a couple of options, the tagging step that's skipped 'cause we add the username to the image directly here, the redirection of STDOUT and ERR to a file that can be inspected to troubleshoot the build and finally whe push the newly created image to the repo. The script looks like this.
+Create a bash script that builds the image, it'll be called like any other script with `./script.sh`. In this script, first we create a variable `IMAGE_VERSION` that contains the day when the image is created, the building function with a couple of options, the tagging step that's skipped 'cause we add the username to the image directly here, the redirection of STDOUT and ERR to a file that can be inspected to troubleshoot the build and finally we push the newly created image to the repo. The script looks like this.
 
 ```
 IMAGE_VERSION=$(date "+%m%d%y") # this sets the version
 
-docker build --progress=plain --no-cache -t andreamariani/rnaseq_snakemake:${IMAGE_VERSION} -t andreamariani/rnaseq_snakemake:latest . 2>&1 | tee stdout.log && \
-docker push andreamariani/rnaseq_snakemake:${IMAGE_VERSION}
+docker build --progress=plain --no-cache -t username/image:${IMAGE_VERSION} -t username/image:latest . 2>&1 | tee stdout.log && \
+docker push username/image:${IMAGE_VERSION}
 
 ```
 
-`--progress=plain` it's similar to a verbose argument, but in reality extends the STDOUT that was shrinked with buildkit.  
-`--no-cache` doesn't cache the build. I'd advise to use it only when building the final image or when conflicts between dependencies are spotted, se we can move around stuff and fix it.  
+`--progress=plain` it's similar to a verbose argument, but in reality extends the STDOUT that was shrinked with buildkit. Tho it creates a wave of text, i think it'll be easier to troubleshoot later on.
+`--no-cache` doesn't cache the build. I'd advise to use it only when building the final image or when conflicts between dependencies are spotted, se we can move around stuff and fix it. One reason to use this is if a particular/large package has dependecies required for other packages in the build and this is the limiting/painfull step (i.e. when buiding [this image](https://github.com/AndreaMariani-AM/Docker/tree/main/ChIPseq-snakemake) ia had trouble with `spp` package from Cran that required `Rsamtools` as dependency but for some reason wasn't able to download it. My workaround was to first download Bioconductor package `ChIPseeker` that had the same dependency, so `spp` could use it and was properly installed). 
 `tee` allows to both write to a file (STDOUT and ERR `2>&1`) and to standard output.
 
 This is the script i'd use when building the final image, below there's commands i'd use when first testing the build. Uncomment and use those.
