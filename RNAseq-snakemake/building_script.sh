@@ -9,7 +9,7 @@ IMAGE_VERSION=$(date "+%m%d%y")
 ##===========================================##===========================================##
 # Build the image and push it to docker hub
 ##===========================================##===========================================##
-docker build --progress=plain --no-cache -t andreamariani/rnaseq_snakemake:${IMAGE_VERSION} -t andreamariani/rnaseq_snakemake:latest . 2>&1 | tee stdout.log && #\
+docker build --progress=plain --no-cache -t andreamariani/rnaseq_snakemake:${IMAGE_VERSION} -t andreamariani/rnaseq_snakemake:latest . 2>&1 | tee stdout.log #&& \
 # docker push andreamariani/rnaseq_snakemake:${IMAGE_VERSION}
 
 # USE THIS LINES ONLY WHEN EVERYTHING WORKS. Below is for testing.
