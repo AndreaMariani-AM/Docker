@@ -18,7 +18,7 @@ This has to be done on a local machine 'cause on HPC, docker won't be installed 
 docker build -t name_of_the_image . 
 ```
 
-`-t` is the --tag flag and it's the name of the docker image i'm building. `.` means ofc this directory.
+`-t` is the --tag flag and it's the name of the docker image i'm building. `.` means ofc the currrent directory, which is where the Dockerfile is. This tells docker to search for a docker file in the current dir.
 
 ## Sending the image to Docker Hub
 

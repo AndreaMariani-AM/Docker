@@ -36,20 +36,20 @@ RUN wget https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64
 # there might be a problem with salmon version that i need to check out later, has to be > 0.13.1
 ##===========================================##===========================================##
 
-# RUN /opt/miniconda3/bin/conda install -c bioconda \
-# samtools=1.10 \
-# star \
-# deeptools \
-# multiqc \
-# pysam \
-# bedops \
-# fastqc \
-# picard \
-# subread \
-# rseqc \
-# gffutils \
-# samblaster \
-# salmon
+RUN /opt/miniconda3/bin/conda install -c bioconda \
+samtools=1.10 \
+star \
+deeptools \
+multiqc \
+pysam \
+bedops \
+fastqc \
+picard \
+subread \
+rseqc \
+gffutils \
+samblaster \
+salmon
 
 
 ##===========================================##===========================================##
@@ -76,6 +76,6 @@ RUN Rscript /install_scripts/install_packages_cran.R
 # Update path for miniconda3 and fastp
 ##===========================================##===========================================##
 
-# ENV PATH "/opt/miniconda3/bin:$PATH"
-# ENV PATH "/usr/local/bin:$PATH"
+ENV PATH "/opt/miniconda3/bin:$PATH"
+ENV PATH "/usr/local/bin:$PATH"
 
