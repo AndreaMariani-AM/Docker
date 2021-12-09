@@ -7,3 +7,5 @@
 # Ignore log files
 *.log
 
+# Ignore PBS script used to activate singularity and open a connection with RStudio server
+./RStudio/Script_for_pbs.md
