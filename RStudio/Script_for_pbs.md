@@ -1,0 +1,1 @@
+# This file contains a general purpose script to run the RStudio server with RStudio Singularity image.
