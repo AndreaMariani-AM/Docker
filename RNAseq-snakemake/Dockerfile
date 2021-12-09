@@ -69,7 +69,7 @@ RUN wget http://opengene.org/fastp/fastp \
 RUN mkdir /install_scripts
 COPY *.R /install_scripts/
 RUN Rscript /install_scripts/install_packages_bioconductor.R
-#RUN Rscript /install_scripts/install_packages_cran.R
+RUN Rscript /install_scripts/install_packages_cran.R
 
 
 ##===========================================##===========================================##
