@@ -1,12 +1,4 @@
-FROM andreamariani/rnaseq
+FROM rocker/rstudio:latest
 
-RUN apt-get update \
-	&& apt-get install -y \
-	## transfer data from or to servers
-	curl
-
-
-RUN /opt/miniconda3/bin/conda install -c bioconda \
-samtools=1.10 \
-bowtie \
-macs2
+# ENV are environment variables, and can be interpreted by the dockerfile
+ENV	DEBIAN_FRONTEND noninteractive
