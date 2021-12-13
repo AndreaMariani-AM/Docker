@@ -82,8 +82,8 @@ RUN apt-get --quiet update -y \
 ##===========================================##===========================================##
 
 RUN cd / \
-	&& wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \
-	&& bash Miniconda3-py38_4.10.3-Linux-x86_64.sh -b -p /miniconda3 \
+	&& wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh \
+	&& bash Miniconda3-py37_4.8.3-Linux-x86_64.sh -b -p /miniconda3 \
 	&& /miniconda3/bin/conda config --add channels defaults \
 	&& /miniconda3/bin/conda config --add channels bioconda \
 	&& /miniconda3/bin/conda config --add channels conda-forge
@@ -98,7 +98,7 @@ ENV PATH "$PATH:/miniconda3/bin"
 ##===========================================##===========================================##
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
-  && update-alternatives --install /usr/bin/python3 python3 /miniconda3/bin/python3.8 2 \
+  && update-alternatives --install /usr/bin/python3 python3 /miniconda3/bin/python3.7 2 \
   && python --version \
   && python3 --version \
   && rm /usr/bin/lsb_release 
@@ -174,7 +174,7 @@ RUN python3 -m pip install \
 
 RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
 && git clone 'https://github.com/CRG-Barcelona/libbeato' \
-&& git clone https://github.com/madler/zlib \
+&& git clone 'https://github.com/madler/zlib' \
 && cd zlib \
 && ./configure --prefix=$HOME \
 && make \
