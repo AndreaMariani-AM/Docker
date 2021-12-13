@@ -47,7 +47,6 @@ RUN apt-get --quiet update -y \
 	&& apt-get --quiet upgrade -y \
 	&& apt-get --quiet install -y \
 	python-dev \
- #   python-pip \
     python3-dev \
     python3-pip \
     python3-tk \
@@ -114,3 +113,83 @@ bedtools \
 samtools \
 deeptools \
 && conda install --quiet -y -c plotly plotly-orca
+
+##----------------------------------------------------------------------------##
+# install Python packages
+#
+# - velocyto is installed in a second run because it doesn't automatically
+#   install its dependencies before
+# - similarly, scvelo requires velocyto
+# umap-learn                  UMAP
+# louvain                     Monocle 3 and scanpy
+# phate                       Seurat
+# tensorflow, dca             DCA
+# python-igraph, fa2, scanpy  scanpy
+# leidenalg                   Leiden algorithm for clustering in Seurat v3
+# numpy scipy cython numba
+# matplotlib scikit-learn
+# h5py click pysam velocyto   velocyto
+# scvelo                      scVelo
+# jupyter                     jupyter
+##----------------------------------------------------------------------------##
+
+RUN python3 -m pip install \
+  click \
+  Cython \
+  dca \
+  fa2 \
+  # "gast==0.2.2" \
+  h5py \
+  leidenalg \
+  louvain \
+  numba \
+  numpy \
+  # "networkx==2.2" \
+  numpydoc \
+  #"matplotlib>=3.0,<3.1" \
+  pandas \
+  phate \
+  pysam \
+  python-igraph \
+  scanpy \
+  scikit-learn \
+  scipy \
+  snaptools \
+  tensorflow \
+  umap-learn \
+  jupyter
+
+RUN python3 -m pip install \
+  velocyto \
+  scvelo
+
+##----------------------------------------------------------------------------##
+# install R packages
+#
+# Copy every file individually to ensure that each step’s build cache is only 
+# invalidated (forcing the step to be re-run) if the specifically required 
+# files change.
+##----------------------------------------------------------------------------##
+# Install bwtool for trackplot R package
+
+RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
+&& git clone 'https://github.com/CRG-Barcelona/libbeato' \
+&& git clone https://github.com/madler/zlib \
+&& cd zlib \
+&& ./configure --prefix=$HOME \
+&& make \
+&& cd .. \
+&& cd libbeato \
+&& git checkout 0c30432af9c7e1e09ba065ad3b2bc042baa54dc2 \
+&& ./configure --prefix=$HOME \
+&& make \
+&& cd .. \
+&& cd bwtool \
+&& ./configure --prefix=$HOME CFLAGS='-I../libbeato -I../zlib' LDFLAGS='-L../libbeato/jkweb -L../libbeato/beato -L../zlib' \
+&& make \
+&& make install
+
+RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
+
+RUN mkdir /Rscripts
+COPY install_packages_function.R /Rscripts/
