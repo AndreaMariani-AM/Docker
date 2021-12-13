@@ -2,10 +2,10 @@ source('/Rscripts/install_packages_function.R')
 
 # utility packages
 packages_to_install <- c(
-  'remotes',
-  'devtools',
-  'tidyverse',
-  'thomasp85/ambient',
+#   'remotes',
+#   'devtools',
+#   'tidyverse',
+#   'thomasp85/ambient',
   'djnavarro/jasmines',
   'jalvesaq/colorout',
   'concaveman',
