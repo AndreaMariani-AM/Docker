@@ -85,9 +85,9 @@ RUN apt-get --quiet update -y \
 RUN cd / \
 	&& wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \
 	&& bash Miniconda3-py38_4.10.3-Linux-x86_64.sh -b -p /miniconda3 \
-	&& /opt/miniconda3/bin/conda config --add channels defaults \
-	&& /opt/miniconda3/bin/conda config --add channels bioconda \
-	&& /opt/miniconda3/bin/conda config --add channels conda-forge
+	&& /miniconda3/bin/conda config --add channels defaults \
+	&& /miniconda3/bin/conda config --add channels bioconda \
+	&& /miniconda3/bin/conda config --add channels conda-forge
 
 ENV PATH "$PATH:/miniconda3/bin"
 
