@@ -56,7 +56,6 @@ packages_to_install <- c(
 
 install_packages(packages_to_install)
 
+
 devtools::install_github(c(
-         "thomasp85/ambient",
-		 "djnavarro/jasmines",
-		 "jalvesaq/colorout"))
+         "VPetukhov/ggrastr"))

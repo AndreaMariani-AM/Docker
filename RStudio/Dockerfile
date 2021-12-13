@@ -82,8 +82,8 @@ RUN apt-get --quiet update -y \
 ##===========================================##===========================================##
 
 RUN cd / \
-	&& wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh \
-	&& bash Miniconda3-py37_4.8.3-Linux-x86_64.sh -b -p /miniconda3 \
+	&& wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \
+	&& bash Miniconda3-py38_4.10.3-Linux-x86_64.sh -b -p /miniconda3 \
 	&& /miniconda3/bin/conda config --add channels defaults \
 	&& /miniconda3/bin/conda config --add channels bioconda \
 	&& /miniconda3/bin/conda config --add channels conda-forge
@@ -98,7 +98,7 @@ ENV PATH "$PATH:/miniconda3/bin"
 ##===========================================##===========================================##
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
-  && update-alternatives --install /usr/bin/python3 python3 /miniconda3/bin/python3.7 2 \
+  && update-alternatives --install /usr/bin/python3 python3 /miniconda3/bin/python3.8 2 \
   && python --version \
   && python3 --version \
   && rm /usr/bin/lsb_release 
@@ -108,11 +108,11 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
 # install conda packages
 ##----------------------------------------------------------------------------##
 
-# RUN conda install --quiet -y -c bioconda \
-# bedtools \
-# samtools \
-# deeptools \
-# && conda install --quiet -y -c plotly plotly-orca
+RUN conda install --quiet -y -c bioconda \
+bedtools \
+samtools \
+deeptools \
+&& conda install --quiet -y -c plotly plotly-orca
 
 ##----------------------------------------------------------------------------##
 # install Python packages
@@ -133,35 +133,35 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
 # jupyter                     jupyter
 ##----------------------------------------------------------------------------##
 
-# RUN python3 -m pip install \
-#   click \
-#   Cython \
-#   dca \
-#   fa2 \
-#   # "gast==0.2.2" \
-#   h5py \
-#   leidenalg \
-#   louvain \
-#   numba \
-#   numpy \
-#   # "networkx==2.2" \
-#   numpydoc \
-#   #"matplotlib>=3.0,<3.1" \
-#   pandas \
-#   phate \
-#   pysam \
-#   python-igraph \
-#   scanpy \
-#   scikit-learn \
-#   scipy \
-#   snaptools \
-#   tensorflow \
-#   umap-learn \
-#   jupyter
+RUN python3 -m pip install \
+  click \
+  Cython \
+  dca \
+  fa2 \
+  # "gast==0.2.2" \
+  h5py \
+  leidenalg \
+  louvain \
+  numba \
+  numpy \
+  # "networkx==2.2" \
+  numpydoc \
+  #"matplotlib>=3.0,<3.1" \
+  pandas \
+  phate \
+  pysam \
+  python-igraph \
+  scanpy \
+  scikit-learn \
+  scipy \
+  snaptools \
+  tensorflow \
+  umap-learn \
+  jupyter
 
-# RUN python3 -m pip install \
-#   velocyto \
-#   scvelo
+RUN python3 -m pip install \
+  velocyto \
+  scvelo
 
 ##----------------------------------------------------------------------------##
 # install R packages
@@ -172,22 +172,22 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
 ##----------------------------------------------------------------------------##
 # Install bwtool for trackplot R package
 
-# RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
-# && git clone 'https://github.com/CRG-Barcelona/libbeato' \
-# && git clone 'https://github.com/madler/zlib' \
-# && cd zlib \
-# && ./configure --prefix=$HOME \
-# && make \
-# && cd .. \
-# && cd libbeato \
-# && git checkout 0c30432af9c7e1e09ba065ad3b2bc042baa54dc2 \
-# && ./configure --prefix=$HOME \
-# && make \
-# && cd .. \
-# && cd bwtool \
-# && ./configure --prefix=$HOME CFLAGS='-I../libbeato -I../zlib' LDFLAGS='-L../libbeato/jkweb -L../libbeato/beato -L../zlib' \
-# && make \
-# && make install
+RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
+&& git clone 'https://github.com/CRG-Barcelona/libbeato' \
+&& git clone 'https://github.com/madler/zlib' \
+&& cd zlib \
+&& ./configure --prefix=$HOME \
+&& make \
+&& cd .. \
+&& cd libbeato \
+&& git checkout 0c30432af9c7e1e09ba065ad3b2bc042baa54dc2 \
+&& ./configure --prefix=$HOME \
+&& make \
+&& cd .. \
+&& cd bwtool \
+&& ./configure --prefix=$HOME CFLAGS='-I../libbeato -I../zlib' LDFLAGS='-L../libbeato/jkweb -L../libbeato/beato -L../zlib' \
+&& make \
+&& make install
 
 RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
 
