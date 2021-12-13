@@ -193,3 +193,18 @@ RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-projec
 
 RUN mkdir /Rscripts
 COPY install_packages_function.R /Rscripts/
+
+COPY packages_utility.R /Rscripts/
+RUN Rscript /Rscripts/packages_utility.R
+
+# COPY packages_plotting.R /Rscripts/
+# RUN Rscript /Rscripts/packages_plotting.R
+
+# COPY packages_compbio.R /Rscripts/
+# RUN Rscript /Rscripts/packages_compbio.R
+
+# COPY packages_single_cell.R /Rscripts/
+# RUN Rscript /Rscripts/packages_single_cell.R
+
+# COPY packages_single_cell_experimental.R /Rscripts/
+# RUN Rscript /Rscripts/packages_single_cell_experimental.R
