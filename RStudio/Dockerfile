@@ -109,7 +109,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
 # install conda packages
 ##----------------------------------------------------------------------------##
 
-RUN conda install --queit -y -c bioconda \
+RUN conda install --quiet -y -c bioconda \
 bedtools \
 samtools \
 deeptools \
