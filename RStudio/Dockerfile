@@ -83,7 +83,7 @@ RUN apt-get --quiet update -y \
 ##===========================================##===========================================##
 
 RUN cd / \
-	&& wget -quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \
+	&& wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \
 	&& bash Miniconda3-py38_4.10.3-Linux-x86_64.sh -b -p /miniconda3 \
 	&& /opt/miniconda3/bin/conda config --add channels defaults \
 	&& /opt/miniconda3/bin/conda config --add channels bioconda \
@@ -109,7 +109,7 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
 # install conda packages
 ##----------------------------------------------------------------------------##
 
-RUN conda install -queit -y -c bioconda \
+RUN conda install --queit -y -c bioconda \
 bedtools \
 samtools \
 deeptools \
