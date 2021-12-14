@@ -10,7 +10,7 @@ packages_to_install <- c(
   'vankesteren/firatheme', #works
   'chrisamiller/fishplot', #works
   'ggalluvial',
-  'gganimate'
+  'gganimate',
   'ggbeeswarm',
   'ggbio',
   'ggdendro',
