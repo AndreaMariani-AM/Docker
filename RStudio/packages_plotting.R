@@ -2,6 +2,7 @@ source('/Rscripts/install_packages_function.R')
 
 # packages for plotting
 packages_to_install <- c(
+  'Bioconductor/S4Vectors'
   # 'alluvial',
   # 'beeswarm',
   # 'circlize',
@@ -16,17 +17,17 @@ packages_to_install <- c(
   # 'ggdendro',
   # 'ggExtra',
   # 'ggforce'
-  'thomasp85/ggfx', #works
-  'erocoar/gghalves', #works
-  'ggpointdensity',
-  'ggpubr',
-  'ggraph',
-  'ggrastr',
-  'ggrepel',
-  'ggridges',
-  'ggsci',
-  'ggsignif',
-  'ggthemes'
+  # 'thomasp85/ggfx', #works
+  # 'erocoar/gghalves', #works
+  # 'ggpointdensity',
+  # 'ggpubr',
+  # 'ggraph',
+#  'ggrastr', # configuration error, maybe better to install it from github
+  # 'ggrepel',
+  # 'ggridges',
+  # 'ggsci',
+  # 'ggsignif',
+  # 'ggthemes',
 #   'heatmaps',
 #   'jcolors',
 #   'paletteer',
@@ -43,3 +44,6 @@ packages_to_install <- c(
 )
 
 install_packages(packages_to_install)
+
+# devtools::install_github(c(
+#          "VPetukhov/ggrastr"))
