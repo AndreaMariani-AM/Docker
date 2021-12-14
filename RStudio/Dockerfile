@@ -200,7 +200,7 @@ COPY install_packages_function.R /Rscripts/
 # COPY packages_plotting.R /Rscripts/
 # RUN Rscript /Rscripts/packages_plotting.R
 
-RUN Rscript -e 'BiocManager::install("S4Vectors)'
+RUN Rscript -e 'BiocManager::install("S4Vectors")'
 
 # COPY packages_compbio.R /Rscripts/
 # RUN Rscript /Rscripts/packages_compbio.R
