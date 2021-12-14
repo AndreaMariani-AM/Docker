@@ -172,22 +172,22 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
 ##----------------------------------------------------------------------------##
 # Install bwtool for trackplot R package
 
-RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
-&& git clone 'https://github.com/CRG-Barcelona/libbeato' \
-&& git clone 'https://github.com/madler/zlib' \
-&& cd zlib \
-&& ./configure --prefix=$HOME \
-&& make \
-&& cd .. \
-&& cd libbeato \
-&& git checkout 0c30432af9c7e1e09ba065ad3b2bc042baa54dc2 \
-&& ./configure --prefix=$HOME \
-&& make \
-&& cd .. \
-&& cd bwtool \
-&& ./configure --prefix=$HOME CFLAGS='-I../libbeato -I../zlib' LDFLAGS='-L../libbeato/jkweb -L../libbeato/beato -L../zlib' \
-&& make \
-&& make install
+# RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
+# && git clone 'https://github.com/CRG-Barcelona/libbeato' \
+# && git clone 'https://github.com/madler/zlib' \
+# && cd zlib \
+# && ./configure --prefix=$HOME \
+# && make \
+# && cd .. \
+# && cd libbeato \
+# && git checkout 0c30432af9c7e1e09ba065ad3b2bc042baa54dc2 \
+# && ./configure --prefix=$HOME \
+# && make \
+# && cd .. \
+# && cd bwtool \
+# && ./configure --prefix=$HOME CFLAGS='-I../libbeato -I../zlib' LDFLAGS='-L../libbeato/jkweb -L../libbeato/beato -L../zlib' \
+# && make \
+# && make install
 
 RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
 
@@ -197,8 +197,8 @@ COPY install_packages_function.R /Rscripts/
 # COPY packages_utility.R /Rscripts/
 # RUN Rscript /Rscripts/packages_utility.R
 
-COPY packages_plotting.R /Rscripts/
-RUN Rscript /Rscripts/packages_plotting.R
+# COPY packages_plotting.R /Rscripts/
+# RUN Rscript /Rscripts/packages_plotting.R
 
 RUN Rscript -e 'BiocManager::install("S4Vectors)'
 
