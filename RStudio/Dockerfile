@@ -108,11 +108,11 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
 # install conda packages
 ##----------------------------------------------------------------------------##
 
-RUN conda install --quiet -y -c bioconda \
-bedtools \
-samtools \
-deeptools \
-&& conda install --quiet -y -c plotly plotly-orca
+# RUN conda install --quiet -y -c bioconda \
+# bedtools \
+# samtools \
+# deeptools \
+# && conda install --quiet -y -c plotly plotly-orca
 
 ##----------------------------------------------------------------------------##
 # install Python packages
@@ -133,35 +133,35 @@ deeptools \
 # jupyter                     jupyter
 ##----------------------------------------------------------------------------##
 
-RUN python3 -m pip install \
-  click \
-  Cython \
-  dca \
-  fa2 \
-  # "gast==0.2.2" \
-  h5py \
-  leidenalg \
-  louvain \
-  numba \
-  numpy \
-  # "networkx==2.2" \
-  numpydoc \
-  #"matplotlib>=3.0,<3.1" \
-  pandas \
-  phate \
-  pysam \
-  python-igraph \
-  scanpy \
-  scikit-learn \
-  scipy \
-  snaptools \
-  tensorflow \
-  umap-learn \
-  jupyter
+# RUN python3 -m pip install \
+#   click \
+#   Cython \
+#   dca \
+#   fa2 \
+#   # "gast==0.2.2" \
+#   h5py \
+#   leidenalg \
+#   louvain \
+#   numba \
+#   numpy \
+#   # "networkx==2.2" \
+#   numpydoc \
+#   #"matplotlib>=3.0,<3.1" \
+#   pandas \
+#   phate \
+#   pysam \
+#   python-igraph \
+#   scanpy \
+#   scikit-learn \
+#   scipy \
+#   snaptools \
+#   tensorflow \
+#   umap-learn \
+#   jupyter
 
-RUN python3 -m pip install \
-  velocyto \
-  scvelo
+# RUN python3 -m pip install \
+#   velocyto \
+#   scvelo
 
 ##----------------------------------------------------------------------------##
 # install R packages
