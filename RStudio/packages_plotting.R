@@ -2,11 +2,11 @@ source('/Rscripts/install_packages_function.R')
 
 # packages for plotting
 packages_to_install <- c(
-    'testthat'
+    'testthat',
 #   'alluvial',
 #   'beeswarm',
 #   'circlize',
-#   'ComplexHeatmap',
+   'ComplexHeatmap'
 #   'cowplot',
 #   'vankesteren/firatheme', #works
 #   'chrisamiller/fishplot', #works
