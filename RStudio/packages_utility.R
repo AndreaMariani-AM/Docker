@@ -15,7 +15,6 @@ packages_to_install <- c(
  # 'xiaodaigh/disk.frame' # doens't work
   'DT',
   'fastcluster',
-  'FlowSOM',
   'foreign',
   'future.apply',
   'gam',
