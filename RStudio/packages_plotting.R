@@ -15,7 +15,7 @@ packages_to_install <- c(
   'ggbio',
   'ggdendro',
   'ggExtra',
-  'ggforce',
+  'ggforce'
 #   'thomasp85/ggfx', #works
 #   'erocoar/gghalves', #works
 #   'ggpointdensity',
