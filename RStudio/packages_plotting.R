@@ -5,14 +5,14 @@ packages_to_install <- c(
   'alluvial',
   'beeswarm',
   'circlize',
-#   'ComplexHeatmap'
+#   'ComplexHeatmap', # has S4Vectors dependency
   'cowplot',
   'vankesteren/firatheme', #works
   'chrisamiller/fishplot', #works
   'ggalluvial',
   'gganimate',
   'ggbeeswarm',
-  'ggbio',
+#  'ggbio', # has S4Vectors dependecy and also zlibbioc
   'ggdendro',
   'ggExtra',
   'ggforce'
