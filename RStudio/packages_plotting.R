@@ -1,12 +1,8 @@
 source('/Rscripts/install_packages_function.R')
 
-if (!requireNamespace("BiocManager", quietly = TRUE))
-    install.packages("BiocManager")
-
-BiocManager::install("S4Vectors")
-
 # packages for plotting
-# packages_to_install <- c(
+packages_to_install <- c(
+    'testthat'
 #   'alluvial',
 #   'beeswarm',
 #   'circlize',
@@ -45,6 +41,6 @@ BiocManager::install("S4Vectors")
 #   'VennDiagram',
 #   'viridis',
 #   'wesanderson'
-# )
+)
 
-# install_packages(packages_to_install)
+install_packages(packages_to_install)
