@@ -44,7 +44,6 @@ packages_to_install <- c(
   'stringi',
   'tensorflow',
   'tsne',
-  'krlmlr/ulimit',
   'umap',
   'uwot',
   'workflowr',
