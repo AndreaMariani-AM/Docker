@@ -2,20 +2,20 @@ source('/Rscripts/install_packages_function.R')
 
 # packages for plotting
 packages_to_install <- c(
-#   'alluvial',
-#   'beeswarm',
-#   'circlize',
+  'alluvial',
+  'beeswarm',
+  'circlize',
 #   'ComplexHeatmap'
   'cowplot',
   'vankesteren/firatheme', #works
   'chrisamiller/fishplot', #works
   'ggalluvial',
   'gganimate'
-#   'ggbeeswarm',
-#   'ggbio',
-#   'ggdendro',
-#   'ggExtra',
-#   'ggforce',
+  'ggbeeswarm',
+  'ggbio',
+  'ggdendro',
+  'ggExtra',
+  'ggforce',
 #   'thomasp85/ggfx', #works
 #   'erocoar/gghalves', #works
 #   'ggpointdensity',
