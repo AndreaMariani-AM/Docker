@@ -1,3 +1,5 @@
+options(buildtools.check = function(action) TRUE)
+
 source('/Rscripts/install_packages_function.R')
 
 # utility packages
@@ -5,14 +7,14 @@ packages_to_install <- c(
   'remotes',
   'devtools'
 #   'tidyverse',
-#   'thomasp85/ambient',
-#   'djnavarro/jasmines',
-#   'jalvesaq/colorout',
+   'thomasp85/ambient', #doesn't work
+#   'djnavarro/jasmines', #works
+   'jalvesaq/colorout', #doesn't work
 #   'concaveman',
 #   'corrr',
 #   'dendextend',
 #   'densityClust',
-#   'xiaodaigh/disk.frame',
+   'xiaodaigh/disk.frame', # doens't work
 #   'DT',
 #   'fastcluster',
 #   'FlowSOM',
@@ -42,7 +44,7 @@ packages_to_install <- c(
 #   'shinyjs',
 #   'shinythemes',
 #   'sf',
-#   'statsbomb/StatsBombR',
+#   'statsbomb/StatsBombR', #works
 #   'stringi',
 #   'tensorflow',
 #   'tsne',
@@ -55,7 +57,3 @@ packages_to_install <- c(
 )
 
 install_packages(packages_to_install)
-
-
-devtools::install_github(c(
-         "VPetukhov/ggrastr"))

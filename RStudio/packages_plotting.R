@@ -7,8 +7,8 @@ packages_to_install <- c(
   'circlize',
   'ComplexHeatmap',
   'cowplot',
-  'vankesteren/firatheme',
-  'chrisamiller/fishplot',
+  'vankesteren/firatheme', #works
+  'chrisamiller/fishplot', #works
   'ggalluvial',
   'gganimate',
   'ggbeeswarm',
