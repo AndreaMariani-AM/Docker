@@ -5,7 +5,7 @@ source('/Rscripts/install_packages_function.R')
 # utility packages
 packages_to_install <- c(
   'remotes',
-  'devtools'
+  'devtools',
 #   'tidyverse',
    'thomasp85/ambient', #doesn't work
 #   'djnavarro/jasmines', #works
@@ -14,7 +14,7 @@ packages_to_install <- c(
 #   'corrr',
 #   'dendextend',
 #   'densityClust',
-   'xiaodaigh/disk.frame', # doens't work
+   'xiaodaigh/disk.frame' # doens't work
 #   'DT',
 #   'fastcluster',
 #   'FlowSOM',
