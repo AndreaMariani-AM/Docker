@@ -194,6 +194,8 @@ RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-projec
 RUN mkdir /Rscripts
 COPY install_packages_function.R /Rscripts/
 
+# Utilities has to run before the others given that contains devtools and remotes packages.
+
 # COPY packages_utility.R /Rscripts/
 # RUN Rscript /Rscripts/packages_utility.R
 
