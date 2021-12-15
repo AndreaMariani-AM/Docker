@@ -43,7 +43,6 @@ COPY ccache.conf /root/.ccache/
 # libpoppler-cpp-dev                     pdftools (R package)
 ##===========================================##===========================================##
 
-RUN apt-get --quiet update --yes \
 RUN apt-get --quiet update -y \
 	&& apt-get --quiet upgrade -y \
 	&& apt-get --quiet install -y \
