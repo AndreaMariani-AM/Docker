@@ -1,9 +1,11 @@
 source('/Rscripts/install_packages_function.R')
 
+# Almost every package might have the same dependecy preblems
+
 # packages for compbio
 packages_to_install <- c(
   'bedr',
-  'biomaRt',
+  'biomaRt', #zlibbioc, s4vectors, biobase
   # 'BSgenome.Hsapiens.UCSC.hg19',
   # 'BSgenome.Mmusculus.UCSC.mm10',
   'ChIPseeker',

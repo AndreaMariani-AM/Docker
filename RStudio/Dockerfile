@@ -1,4 +1,4 @@
-FROM rocker/rstudio:latest
+FROM rocker/rstudio:4.1.0
 
 ##===========================================##===========================================##
 # ENV are environment variables, and can be interpreted by the dockerfile. Seems like that this is discouraged cause it'll persist in the finale image, and it's always noninteractive
@@ -199,8 +199,8 @@ COPY install_packages_function.R /Rscripts/
 COPY packages_utility.R /Rscripts/
 RUN Rscript /Rscripts/packages_utility.R
 
-COPY packages_plotting.R /Rscripts/
-RUN Rscript /Rscripts/packages_plotting.R
+# COPY packages_plotting.R /Rscripts/
+# RUN Rscript /Rscripts/packages_plotting.R
 
 # COPY packages_compbio.R /Rscripts/
 # RUN Rscript /Rscripts/packages_compbio.R
