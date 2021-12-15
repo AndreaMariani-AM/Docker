@@ -5,7 +5,7 @@ packages_to_install <- c(
   # 'alluvial',
   # 'beeswarm',
   # 'circlize',
-#   'ComplexHeatmap', # has S4Vectors dependency
+  'ComplexHeatmap', # has S4Vectors dependency
   # 'cowplot',
   # 'vankesteren/firatheme', #works
   # 'chrisamiller/fishplot', #works
@@ -44,5 +44,5 @@ packages_to_install <- c(
 
 install_packages(packages_to_install)
 
-devtools::install_github(c(
-         "VPetukhov/ggrastr"))
+# devtools::install_github(c(
+#          "VPetukhov/ggrastr"))
