@@ -82,8 +82,8 @@ RUN apt-get --quiet update -y \
 
 # https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh this install py 3.8 which gives me problems later
 RUN cd / \
-  && wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \
-  && bash Miniconda3-py38_4.10.3-Linux-x86_64.sh -b -p /miniconda3
+  && wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.10.3-Linux-x86_64.sh \
+  && bash Miniconda3-py37_4.10.3-Linux-x86_64.sh -b -p /miniconda3
 ENV PATH "$PATH:/miniconda3/bin"
 
 
@@ -95,7 +95,7 @@ ENV PATH "$PATH:/miniconda3/bin"
 ##===========================================##===========================================##
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
-  && update-alternatives --install /usr/bin/python3 python3 /miniconda3/bin/python3.8 2 \
+  && update-alternatives --install /usr/bin/python3 python3 /miniconda3/bin/python3.7 2 \
   && python --version \
   && python3 --version \
   && rm /usr/bin/lsb_release
