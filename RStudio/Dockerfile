@@ -196,18 +196,18 @@ RUN conda install --quiet -y -c bioconda \
   bioconductor-s4vectors \
   && conda update -y bioconductor-s4vectors
 
-# RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
+RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
 
-# RUN mkdir /Rscripts
-# COPY install_packages_function.R /Rscripts/
+RUN mkdir /Rscripts
+COPY install_packages_function.R /Rscripts/
 
-# # Utilities has to run before the others given that contains devtools and remotes packages.
+# Utilities has to run before the others given that contains devtools and remotes packages.
 
-# COPY packages_utility.R /Rscripts/
-# RUN Rscript /Rscripts/packages_utility.R
+COPY packages_utility.R /Rscripts/
+RUN Rscript /Rscripts/packages_utility.R
 
-# COPY packages_plotting.R /Rscripts/
-# RUN Rscript /Rscripts/packages_plotting.R
+COPY packages_plotting.R /Rscripts/
+RUN Rscript /Rscripts/packages_plotting.R
 
 # COPY packages_compbio.R /Rscripts/
 # RUN Rscript /Rscripts/packages_compbio.R
