@@ -1,6 +1,6 @@
 VER=
 CCACHE=ccache
-CC=$(CCACHE) clang$(VER)
+CC=$(CCACHE) gcc$(VER)
 CXX=$(CCACHE) g++$(VER)
 CXX11=$(CCACHE) g++$(VER)
 CXX14=$(CCACHE) g++$(VER)

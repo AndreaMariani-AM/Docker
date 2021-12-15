@@ -1,4 +1,4 @@
-FROM rocker/rstudio:4.0.5
+FROM rocker/rstudio:4.0.3
 
 ##===========================================##===========================================##
 # ENV are environment variables, and can be interpreted by the dockerfile. Seems like that this is discouraged cause it'll persist in the finale image, and it's always noninteractive
@@ -15,7 +15,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
-ENV CCACHE_UMASK=002
+
 
 ##===========================================##===========================================##
 # COPY files into the RUN
