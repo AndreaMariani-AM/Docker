@@ -197,6 +197,8 @@ COPY install_packages_function.R /Rscripts/
 COPY packages_utility.R /Rscripts/
 RUN Rscript /Rscripts/packages_utility.R
 
+## Utilities has to run before the others given that contains devtools and remotes packages.
+
 # COPY packages_plotting.R /Rscripts/
 # RUN Rscript /Rscripts/packages_plotting.R
 

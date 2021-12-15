@@ -1,21 +1,17 @@
-source('/Rscripts/install_packages_function.R')
+ source('/Rscripts/install_packages_function.R')
 
 # utility packages
 packages_to_install <- c(
   'remotes',
   'devtools',
   'tidyverse',
-  'thomasp85/ambient',
   'djnavarro/jasmines',
-  'jalvesaq/colorout',
   'concaveman',
   'corrr',
   'dendextend',
   'densityClust',
-  'xiaodaigh/disk.frame',
   'DT',
   'fastcluster',
-  'FlowSOM',
   'foreign',
   'future.apply',
   'gam',
@@ -42,11 +38,9 @@ packages_to_install <- c(
   'shinyjs',
   'shinythemes',
   'sf',
-  'statsbomb/StatsBombR',
   'stringi',
   'tensorflow',
   'tsne',
-  'krlmlr/ulimit',
   'umap',
   'uwot',
   'workflowr',
