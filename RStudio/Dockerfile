@@ -15,6 +15,7 @@ ARG DEBIAN_FRONTEND=noninteractive
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
+ENV CCACHE_UMASK=002
 
 ##===========================================##===========================================##
 # COPY files into the RUN
