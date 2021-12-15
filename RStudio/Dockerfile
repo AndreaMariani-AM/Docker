@@ -77,7 +77,8 @@ RUN apt-get --quiet update -y \
 ##===========================================##===========================================##
 # Install Miniconda for Python 3.7 
 # 
-# Dani had problem with Python 3.8, but since some time has passed sinced the last build, i guess we can try it
+# Dani had problems with Python 3.8 and i have similar ones. For some packages from Bioconductor
+# gcc compiler failed to create some temporary files and couldn't install some packages
 ##===========================================##===========================================##
 
 # https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh this install py 3.8 which gives me problems later
@@ -131,6 +132,7 @@ RUN conda install --quiet --yes -c bioconda \
 # scvelo                      scVelo
 # jupyter                     jupyter
 ##===========================================##===========================================##
+
 RUN python3 -m pip install \
   click \
   Cython \
@@ -161,7 +163,6 @@ RUN python3 -m pip install \
   velocyto \
   scvelo
 
-
 ##===========================================##===========================================##
 # install R packages
 #
@@ -173,7 +174,7 @@ RUN python3 -m pip install \
 # Install bwtool for trackplot R package
 RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
 && git clone 'https://github.com/CRG-Barcelona/libbeato' \
-&& git clone https://github.com/madler/zlib \
+&& git clone 'https://github.com/madler/zlib' \
 && cd zlib \
 && ./configure --prefix=$HOME \
 && make \
