@@ -95,7 +95,7 @@ ENV PATH "$PATH:/miniconda3/bin"
 ##===========================================##===========================================##
 
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
-  && update-alternatives --install /usr/bin/python3 python3 /miniconda3/bin/python3.7 2 \
+  && update-alternatives --install /usr/bin/python3 python3 /miniconda3/bin/python3.8 2 \
   && python --version \
   && python3 --version \
   && rm /usr/bin/lsb_release
