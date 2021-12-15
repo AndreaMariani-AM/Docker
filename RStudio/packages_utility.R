@@ -4,7 +4,6 @@ source('/Rscripts/install_packages_function.R')
 packages_to_install <- c(
   'remotes',
   'devtools',
-  'ChIPseeker'
   # 'tidyverse',
   # 'thomasp85/ambient',
   # 'djnavarro/jasmines',
