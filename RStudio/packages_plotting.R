@@ -32,7 +32,7 @@ packages_to_install <- c(
   'paletteer',
   'patchwork',
   'pheatmap',
-  'plotly',
+  'plotly'
 #   'prismatic',
 #   'RColorBrewer',
 #   'scico',
