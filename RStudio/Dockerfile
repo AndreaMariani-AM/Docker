@@ -1,4 +1,4 @@
-FROM rocker/rstudio:4.1.0
+FROM rocker/rstudio:4.0.5
 
 ##===========================================##===========================================##
 # ENV are environment variables, and can be interpreted by the dockerfile. Seems like that this is discouraged cause it'll persist in the finale image, and it's always noninteractive
