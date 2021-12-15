@@ -21,18 +21,18 @@ packages_to_install <- c(
   # 'ggpointdensity',
   # 'ggpubr',
   # 'ggraph',
-#  'ggrastr', # configuration error, maybe better to install it from github
-  'ggrepel',
-  'ggridges',
-  'ggsci',
-  'ggsignif',
-  'ggthemes'
-#   'heatmaps',
-#   'jcolors',
-#   'paletteer',
-#   'patchwork',
-#   'pheatmap',
-#   'plotly',
+#  'ggrastr', # configuration error
+  # 'ggrepel',
+  # 'ggridges',
+  # 'ggsci',
+  # 'ggsignif',
+  # 'ggthemes',
+  'heatmaps',
+  'jcolors',
+  'paletteer',
+  'patchwork',
+  'pheatmap',
+  'plotly',
 #   'prismatic',
 #   'RColorBrewer',
 #   'scico',
@@ -45,4 +45,4 @@ packages_to_install <- c(
 install_packages(packages_to_install)
 
 devtools::install_github(c(
-         "VPetukhov/ggrastr"))
+         "VPetukhov/ggrastr")) # Still config error for Cairo
