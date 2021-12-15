@@ -3,8 +3,7 @@
 # utility packages
 packages_to_install <- c(
   'remotes',
-  'devtools',
-  'ComplexHeatmap'
+  'devtools'
   # 'tidyverse',
   # 'djnavarro/jasmines',
   # 'concaveman',
