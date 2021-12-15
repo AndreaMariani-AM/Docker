@@ -80,17 +80,17 @@ RUN apt-get --quiet update -y \
 # Dani had problem with Python 3.8, but since some time has passed sinced the last build, i guess we can try it
 ##===========================================##===========================================##
 
-# https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh this install py 3.8 which gives me problems later
+# https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh this install py 3.8 which gives me problems later
 RUN cd / \
-  && wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh \
-  && bash Miniconda3-py37_4.8.3-Linux-x86_64.sh -b -p /miniconda3
+  && wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh \
+  && bash Miniconda3-py38_4.10.3-Linux-x86_64.sh -b -p /miniconda3
 ENV PATH "$PATH:/miniconda3/bin"
 
 
 ##===========================================##===========================================##
-## make Python 3.8 default because velocyto requires at least Python 3.6
+## make Python 3.7 default because velocyto requires at least Python 3.6
 ## - set 'python' command to call Python 2.7
-## - set 'python3' command to call Python 3.8
+## - set 'python3' command to call Python 3.7
 ## - rm lsb_release because it prevents pip3 from working properly
 ##===========================================##===========================================##
 
