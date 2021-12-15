@@ -199,8 +199,8 @@ RUN Rscript /Rscripts/packages_utility.R
 
 ## Utilities has to run before the others given that contains devtools and remotes packages.
 
-# COPY packages_plotting.R /Rscripts/
-# RUN Rscript /Rscripts/packages_plotting.R
+COPY packages_plotting.R /Rscripts/
+RUN Rscript /Rscripts/packages_plotting.R
 
 # COPY packages_compbio.R /Rscripts/
 # RUN Rscript /Rscripts/packages_compbio.R
