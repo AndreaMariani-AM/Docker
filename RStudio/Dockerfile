@@ -1,40 +1,53 @@
 FROM rocker/rstudio:latest
 
-ENV DEBIAN_FRONTEND noninteractive
+##===========================================##===========================================##
+# ENV are environment variables, and can be interpreted by the dockerfile. Seems like that this is discouraged cause it'll persist in the finale image, and it's always noninteractive
+# it's set to avoid question/dialogs during the build (that can be ignored). The non interaction is set when zero interaction is required during the installation/update via apt.
+# ENV DEBIAN_FRONTEND noninteractive
+# What it seems to be recomended is to either avoid DEBIAN_FRONTEND or to use 
+# RUN DEBIAN_FRONTEND=noninteractive apt-get install -y -q packages, on the fly when required
+# or even this, as will only available during the build
+# ARG DEBIAN_FRONTEND=noninteractive
+##===========================================##===========================================##
+
+#ENV DEBIAN_FRONTEND noninteractive
+ARG DEBIAN_FRONTEND=noninteractive
 ENV LANG en_US.UTF-8
 ENV LANGUAGE en_US:en
 ENV LC_ALL en_US.UTF-8
 
-##----------------------------------------------------------------------------##
-##
-##----------------------------------------------------------------------------##
+##===========================================##===========================================##
+# COPY files into the RUN
+##===========================================##===========================================##
+
 COPY Makevars /root/.R/
 COPY ccache.conf /root/.ccache/
 
-##----------------------------------------------------------------------------##
-## update and install system packages
-##
-## libcurl4-openssl-dev                   curl and RCurl (R package)
-## libssl-dev                             openssl (R package)
-## libcairo2-dev, libxt-dev               Cairo (R package)
-## libxml2-dev                            XML and xml2 (R package)
-## libudunits2-dev                        units (R package)
-## libhdf5-dev                            hdf5r (R package)
-## libv8-dev                              V8 (R package)
-## libgdal-dev                            rgdal (R package)
-## xorg, libx11-dev, libglu1-mesa-dev     Monocle 3 (R package)
-## samtools libboost-all-dev              velocyto (R package)
-## libgsl-dev                             gsl -> slingshot (R package)
-## libbz2-dev                             Rsamtools (R package)
-## libfftw3-dev                           heatmaps (R package)
-## libglpk-dev                            FlowSOM (R package)
-## libpoppler-cpp-dev                     pdftools (R package)
-##----------------------------------------------------------------------------##
+##===========================================##===========================================##
+# Update and install system packages
+#
+# libcurl4-openssl-dev                   curl and RCurl (R package)
+# libssl-dev                             openssl (R package)
+# libcairo2-dev, libxt-dev               Cairo (R package)
+# libxml2-dev                            XML and xml2 (R package)
+# libudunits2-dev                        units (R package)
+# libhdf5-dev                            hdf5r (R package)
+# libv8-dev                              V8 (R package)
+# libgdal-dev                            rgdal (R package)
+# xorg, libx11-dev, libglu1-mesa-dev     Monocle 3 (R package)
+# samtools libboost-all-dev              velocyto (R package)
+# libgsl-dev                             gsl -> slingshot (R package)
+# libbz2-dev                             Rsamtools (R package)
+# libfftw3-dev                           heatmaps (R package)
+# libglpk-dev                            FlowSOM (R package)
+# libpoppler-cpp-dev                     pdftools (R package)
+##===========================================##===========================================##
+
 RUN apt-get --quiet update --yes \
-  && apt-get --quiet upgrade --yes \
-  && apt-get --quiet install --yes  \
-    python-dev \
- #   python-pip \
+RUN apt-get --quiet update -y \
+	&& apt-get --quiet upgrade -y \
+	&& apt-get --quiet install -y \
+	python-dev \
     python3-dev \
     python3-pip \
     python3-tk \
@@ -62,21 +75,26 @@ RUN apt-get --quiet update --yes \
     mysql-server \
   && rm -rf /var/lib/apt/lists/*
 
-##----------------------------------------------------------------------------##
-## install conda to install Python 3.7 afterwards
-##----------------------------------------------------------------------------##
+##===========================================##===========================================##
+# Install Miniconda for Python 3.7 
+# 
+# Dani had problem with Python 3.8, but since some time has passed sinced the last build, i guess we can try it
+##===========================================##===========================================##
+
 # https://repo.anaconda.com/miniconda/Miniconda3-latest-Linux-x86_64.sh this install py 3.8 which gives me problems later
 RUN cd / \
   && wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.8.3-Linux-x86_64.sh \
   && bash Miniconda3-py37_4.8.3-Linux-x86_64.sh -b -p /miniconda3
 ENV PATH "$PATH:/miniconda3/bin"
 
-##----------------------------------------------------------------------------##
-## make Python 3.7 default because velocyto requires at least Python 3.6
+
+##===========================================##===========================================##
+## make Python 3.8 default because velocyto requires at least Python 3.6
 ## - set 'python' command to call Python 2.7
-## - set 'python3' command to call Python 3.7
+## - set 'python3' command to call Python 3.8
 ## - rm lsb_release because it prevents pip3 from working properly
-##----------------------------------------------------------------------------##
+##===========================================##===========================================##
+
 RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
   && update-alternatives --install /usr/bin/python3 python3 /miniconda3/bin/python3.7 2 \
   && python --version \
@@ -93,22 +111,22 @@ RUN conda install --quiet --yes -c bioconda \
   && conda install --quiet --yes -c plotly plotly-orca
 
 ##----------------------------------------------------------------------------##
-## install Python packages
-##
-## - velocyto is installed in a second run because it doesn't automatically
-##   install its dependencies before
-## - similarly, scvelo requires velocyto
-## umap-learn                  UMAP
-## louvain                     Monocle 3 and scanpy
-## phate                       Seurat
-## tensorflow, dca             DCA
-## python-igraph, fa2, scanpy  scanpy
-## leidenalg                   Leiden algorithm for clustering in Seurat v3
-## numpy scipy cython numba
-## matplotlib scikit-learn
-## h5py click pysam velocyto   velocyto
-## scvelo                      scVelo
-## jupyter                     jupyter
+# install Python packages
+#
+# - velocyto is installed in a second run because it doesn't automatically
+#   install its dependencies before
+# - similarly, scvelo requires velocyto
+# umap-learn                  UMAP
+# louvain                     Monocle 3 and scanpy
+# phate                       Seurat
+# tensorflow, dca             DCA
+# python-igraph, fa2, scanpy  scanpy
+# leidenalg                   Leiden algorithm for clustering in Seurat v3
+# numpy scipy cython numba
+# matplotlib scikit-learn
+# h5py click pysam velocyto   velocyto
+# scvelo                      scVelo
+# jupyter                     jupyter
 ##----------------------------------------------------------------------------##
 RUN python3 -m pip install \
   click \
@@ -142,10 +160,11 @@ RUN python3 -m pip install \
 
 
 ##----------------------------------------------------------------------------##
-## install R packages
-## Copy every file individually to ensure that each step’s build cache is only 
-## invalidated (forcing the step to be re-run) if the specifically required 
-## files change.
+# install R packages
+#
+# Copy every file individually to ensure that each step’s build cache is only 
+# invalidated (forcing the step to be re-run) if the specifically required 
+# files change.
 ##----------------------------------------------------------------------------##
 # Install bwtool for trackplot R package
 RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
