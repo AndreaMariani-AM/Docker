@@ -9,3 +9,4 @@
 
 # Ignore PBS script used to activate singularity and open a connection with RStudio server
 RStudio/**/*_script.md
+RStudio_mine_backup

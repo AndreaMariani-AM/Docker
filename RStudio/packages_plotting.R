@@ -5,14 +5,14 @@ packages_to_install <- c(
   'alluvial',
   'beeswarm',
   'circlize',
-  # 'ComplexHeatmap', # has S4Vectors dependency
+  'ComplexHeatmap',
   'cowplot',
   'vankesteren/firatheme',
   'chrisamiller/fishplot',
   'ggalluvial',
   'gganimate',
   'ggbeeswarm',
-#  'ggbio', # has S4Vectors dependecy and also zlibbioc
+  'ggbio',
   'ggdendro',
   'ggExtra',
   'ggforce',
@@ -21,13 +21,13 @@ packages_to_install <- c(
   'ggpointdensity',
   'ggpubr',
   'ggraph',
-#  'ggrastr', # configuration error
+  'ggrastr',
   'ggrepel',
   'ggridges',
   'ggsci',
   'ggsignif',
   'ggthemes',
-#  'heatmaps', #zlibbioc, S4Vectors, EBIimage, dependecy problem, same sa always with ccache gcc error.
+  'heatmaps',
   'jcolors',
   'paletteer',
   'patchwork',
@@ -43,6 +43,3 @@ packages_to_install <- c(
 )
 
 install_packages(packages_to_install)
-
-devtools::install_github(c(
-         "VPetukhov/ggrastr")) # Still config error for Cairo
