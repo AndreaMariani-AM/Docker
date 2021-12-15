@@ -83,7 +83,11 @@ RUN apt-get --quiet update -y \
 # https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh this install py 3.8 which gives me problems later
 RUN cd / \
   && wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.10.3-Linux-x86_64.sh \
-  && bash Miniconda3-py37_4.10.3-Linux-x86_64.sh -b -p /miniconda3
+  && bash Miniconda3-py37_4.10.3-Linux-x86_64.sh -b -p /miniconda3 \
+  && /miniconda3/bin/conda config --add channels defaults \
+	&& /miniconda3/bin/conda config --add channels bioconda \
+	&& /miniconda3/bin/conda config --add channels conda-forge
+
 ENV PATH "$PATH:/miniconda3/bin"
 
 
@@ -100,16 +104,16 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
   && python3 --version \
   && rm /usr/bin/lsb_release
 
-##----------------------------------------------------------------------------##
-## install conda packages
-##----------------------------------------------------------------------------##
+##===========================================##===========================================##
+# install conda packages
+##===========================================##===========================================##
 RUN conda install --quiet --yes -c bioconda \
   bedtools \
   deeptools \
   samtools \
   && conda install --quiet --yes -c plotly plotly-orca
 
-##----------------------------------------------------------------------------##
+##===========================================##===========================================##
 # install Python packages
 #
 # - velocyto is installed in a second run because it doesn't automatically
@@ -126,7 +130,7 @@ RUN conda install --quiet --yes -c bioconda \
 # h5py click pysam velocyto   velocyto
 # scvelo                      scVelo
 # jupyter                     jupyter
-##----------------------------------------------------------------------------##
+##===========================================##===========================================##
 RUN python3 -m pip install \
   click \
   Cython \
@@ -158,13 +162,14 @@ RUN python3 -m pip install \
   scvelo
 
 
-##----------------------------------------------------------------------------##
+##===========================================##===========================================##
 # install R packages
 #
 # Copy every file individually to ensure that each step’s build cache is only 
 # invalidated (forcing the step to be re-run) if the specifically required 
 # files change.
-##----------------------------------------------------------------------------##
+##===========================================##===========================================##
+
 # Install bwtool for trackplot R package
 RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
 && git clone 'https://github.com/CRG-Barcelona/libbeato' \
@@ -196,3 +201,9 @@ RUN Rscript /Rscripts/packages_utility.R
 
 # COPY packages_compbio.R /Rscripts/
 # RUN Rscript /Rscripts/packages_compbio.R
+
+# COPY packages_single_cell.R /Rscripts/
+# RUN Rscript /Rscripts/packages_single_cell.R
+
+# COPY packages_single_cell_experimental.R /Rscripts/
+# RUN Rscript /Rscripts/packages_single_cell_experimental.R
