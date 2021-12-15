@@ -189,13 +189,6 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
 # && make \
 # && make install
 
-
-# Installing s4vectors from bioconda 
-
-RUN conda install --quiet -y -c bioconda \
-  bioconductor-s4vectors \
-  && conda update -y bioconductor-s4vectors
-
 RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
 
 RUN mkdir /Rscripts
