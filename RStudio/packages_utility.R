@@ -2,8 +2,8 @@
 
 # utility packages
 packages_to_install <- c(
-  # 'remotes',
-  # 'devtools',
+  'remotes',
+  'devtools',
   'tidyverse'
   # 'djnavarro/jasmines',
   # 'concaveman',
