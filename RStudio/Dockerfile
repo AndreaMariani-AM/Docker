@@ -1,4 +1,4 @@
-FROM andreamariani/rstudio_base:121721
+FROM andreamariani/rstudio_base_ghost:121721
 
 ##===========================================##===========================================##
 # ENV are environment variables, and can be interpreted by the dockerfile. Seems like that this is discouraged cause it'll persist in the finale image, and it's always noninteractive
