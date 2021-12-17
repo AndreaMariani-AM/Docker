@@ -1,4 +1,4 @@
-FROM andreamariani/rstudio_base_ghost:121721
+FROM andreamariani/rstudio:121721
 
 ##===========================================##===========================================##
 # ENV are environment variables, and can be interpreted by the dockerfile. Seems like that this is discouraged cause it'll persist in the finale image, and it's always noninteractive
@@ -189,13 +189,13 @@ ENV PATH "$PATH:/miniconda3/bin"
 # && make \
 # && make install
 
-# RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
+RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
 
-# RUN mkdir /Rscripts
-# COPY install_packages_function.R /Rscripts/
+RUN mkdir /Rscripts
+COPY install_packages_function.R /Rscripts/
 
-# COPY packages_utility.R /Rscripts/
-# RUN Rscript /Rscripts/packages_utility.R
+COPY packages_utility.R /Rscripts/
+RUN Rscript /Rscripts/packages_utility.R
 
 # ## Utilities has to run before the others given that contains devtools and remotes packages.
 
