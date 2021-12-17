@@ -82,14 +82,14 @@ RUN apt-get --quiet update -y \
 ##===========================================##===========================================##
 
 # https://repo.anaconda.com/miniconda/Miniconda3-py38_4.10.3-Linux-x86_64.sh this install py 3.8 which gives me problems later
-RUN cd / \
-  && wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.10.3-Linux-x86_64.sh \
-  && bash Miniconda3-py37_4.10.3-Linux-x86_64.sh -b -p /miniconda3 \
-  && /miniconda3/bin/conda config --add channels defaults \
-	&& /miniconda3/bin/conda config --add channels bioconda \
-	&& /miniconda3/bin/conda config --add channels conda-forge
+# RUN cd / \
+#   && wget --quiet https://repo.anaconda.com/miniconda/Miniconda3-py37_4.10.3-Linux-x86_64.sh \
+#   && bash Miniconda3-py37_4.10.3-Linux-x86_64.sh -b -p /miniconda3 \
+#   && /miniconda3/bin/conda config --add channels defaults \
+# 	&& /miniconda3/bin/conda config --add channels bioconda \
+# 	&& /miniconda3/bin/conda config --add channels conda-forge
 
-ENV PATH "$PATH:/miniconda3/bin"
+# ENV PATH "$PATH:/miniconda3/bin"
 
 
 ##===========================================##===========================================##
