@@ -15,8 +15,8 @@ IMAGE_VERSION=$(date "+%m%d%y")
 
 # USE THIS LINES ONLY WHEN EVERYTHING WORKS. Below is for testing.
 
-docker build --progress=plain --no-cache -t andreamariani/rstudio_base:1103_env -t andreamariani/rstudio_base:latest . 2>&1 | tee stdout.log && \
-docker push andreamariani/rstudio_base:1103_env
+docker build --progress=plain --no-cache -t andreamariani/rstudio_base:1106_env -t andreamariani/rstudio_base:latest . 2>&1 | tee stdout.log && \
+docker push andreamariani/rstudio_base:1106_env
 docker push andreamariani/rstudio_base:latest
 
 ##===========================================##===========================================##
