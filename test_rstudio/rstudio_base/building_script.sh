@@ -19,7 +19,7 @@ IMAGE_VERSION=$(date "+%m%d%y")
 ##===========================================##===========================================##
 # Bulding/testing components of the image
 ##===========================================##===========================================##
-# docker build --progress=plain -t andreamariani/rstudio:${IMAGE_VERSION} -t andreamariani/rstudio:latest . 2>&1 | tee stdout.log
+docker build --progress=plain -t andreamariani/test:${IMAGE_VERSION} . 2>&1 | tee stdout.log
 
 # I think --no-cache arguments it's usefull when building the final image of when there are problmes withe dependencies,
 # otherwise it slows down everything. Last part redirects STDOUT/ERR both to STDOUT and a file that it's usefull to check
