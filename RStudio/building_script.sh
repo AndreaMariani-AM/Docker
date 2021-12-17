@@ -9,9 +9,9 @@ IMAGE_VERSION=$(date "+%m%d%y")
 ##===========================================##===========================================##
 # Build the image and push it to docker hub
 ##===========================================##===========================================##
-# docker build --progress=plain --no-cache -t andreamariani/rstudio:${IMAGE_VERSION} -t andreamariani/rstudio:latest . 2>&1 | tee stdout.log #&& \
-# docker push andreamariani/rstudio:${IMAGE_VERSION}
-# docker push andreamariani/rstudio:latest
+docker build --progress=plain --no-cache -t andreamariani/rstudio:${IMAGE_VERSION} -t andreamariani/rstudio:latest . 2>&1 | tee stdout.log && \
+docker push andreamariani/rstudio:${IMAGE_VERSION}
+docker push andreamariani/rstudio:latest
 
 # USE THIS LINES ONLY WHEN EVERYTHING WORKS. Below is for testing.
 
