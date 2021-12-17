@@ -1,4 +1,4 @@
-FROM rocker/rstudio:latest
+FROM andreamariani/rstudio_base:121721
 
 ##===========================================##===========================================##
 # ENV are environment variables, and can be interpreted by the dockerfile. Seems like that this is discouraged cause it'll persist in the finale image, and it's always noninteractive
@@ -108,11 +108,11 @@ RUN update-alternatives --install /usr/bin/python python /usr/bin/python2.7 1 \
 ##===========================================##===========================================##
 # install conda packages
 ##===========================================##===========================================##
-RUN conda install --quiet --yes -c bioconda \
-  bedtools \
-  deeptools \
-  samtools \
-  && conda install --quiet --yes -c plotly plotly-orca
+# RUN conda install --quiet --yes -c bioconda \
+#   bedtools \
+#   deeptools \
+#   samtools \
+#   && conda install --quiet --yes -c plotly plotly-orca
 
 ##===========================================##===========================================##
 # install Python packages
@@ -133,35 +133,35 @@ RUN conda install --quiet --yes -c bioconda \
 # jupyter                     jupyter
 ##===========================================##===========================================##
 
-RUN python3 -m pip install \
-  click \
-  Cython \
-  dca \
-  fa2 \
-  # "gast==0.2.2" \
-  h5py \
-  leidenalg \
-  louvain \
-  numba \
-  numpy \
-  # "networkx==2.2" \
-  numpydoc \
-  #"matplotlib>=3.0,<3.1" \
-  pandas \
-  phate \
-  pysam \
-  python-igraph \
-  scanpy \
-  scikit-learn \
-  scipy \
-  snaptools \
-  tensorflow \
-  umap-learn \
-  jupyter
+# RUN python3 -m pip install \
+#   click \
+#   Cython \
+#   dca \
+#   fa2 \
+#   # "gast==0.2.2" \
+#   h5py \
+#   leidenalg \
+#   louvain \
+#   numba \
+#   numpy \
+#   # "networkx==2.2" \
+#   numpydoc \
+#   #"matplotlib>=3.0,<3.1" \
+#   pandas \
+#   phate \
+#   pysam \
+#   python-igraph \
+#   scanpy \
+#   scikit-learn \
+#   scipy \
+#   snaptools \
+#   tensorflow \
+#   umap-learn \
+#   jupyter
 
-RUN python3 -m pip install \
-  velocyto \
-  scvelo
+# RUN python3 -m pip install \
+#   velocyto \
+#   scvelo
 
 ##===========================================##===========================================##
 # install R packages
@@ -172,38 +172,38 @@ RUN python3 -m pip install \
 ##===========================================##===========================================##
 
 # Install bwtool for trackplot R package
-RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
-&& git clone 'https://github.com/CRG-Barcelona/libbeato' \
-&& git clone 'https://github.com/madler/zlib' \
-&& cd zlib \
-&& ./configure --prefix=$HOME \
-&& make \
-&& cd .. \
-&& cd libbeato \
-&& git checkout 0c30432af9c7e1e09ba065ad3b2bc042baa54dc2 \
-&& ./configure --prefix=$HOME \
-&& make \
-&& cd .. \
-&& cd bwtool \
-&& ./configure --prefix=$HOME CFLAGS='-I../libbeato -I../zlib' LDFLAGS='-L../libbeato/jkweb -L../libbeato/beato -L../zlib' \
-&& make \
-&& make install
+# RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
+# && git clone 'https://github.com/CRG-Barcelona/libbeato' \
+# && git clone 'https://github.com/madler/zlib' \
+# && cd zlib \
+# && ./configure --prefix=$HOME \
+# && make \
+# && cd .. \
+# && cd libbeato \
+# && git checkout 0c30432af9c7e1e09ba065ad3b2bc042baa54dc2 \
+# && ./configure --prefix=$HOME \
+# && make \
+# && cd .. \
+# && cd bwtool \
+# && ./configure --prefix=$HOME CFLAGS='-I../libbeato -I../zlib' LDFLAGS='-L../libbeato/jkweb -L../libbeato/beato -L../zlib' \
+# && make \
+# && make install
 
-RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
+# RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
 
-RUN mkdir /Rscripts
-COPY install_packages_function.R /Rscripts/
+# RUN mkdir /Rscripts
+# COPY install_packages_function.R /Rscripts/
 
-COPY packages_utility.R /Rscripts/
-RUN Rscript /Rscripts/packages_utility.R
+# COPY packages_utility.R /Rscripts/
+# RUN Rscript /Rscripts/packages_utility.R
 
-## Utilities has to run before the others given that contains devtools and remotes packages.
+# ## Utilities has to run before the others given that contains devtools and remotes packages.
 
-COPY packages_plotting.R /Rscripts/
-RUN Rscript /Rscripts/packages_plotting.R
+# COPY packages_plotting.R /Rscripts/
+# RUN Rscript /Rscripts/packages_plotting.R
 
-COPY packages_compbio.R /Rscripts/
-RUN Rscript /Rscripts/packages_compbio.R
+# COPY packages_compbio.R /Rscripts/
+# RUN Rscript /Rscripts/packages_compbio.R
 
 # COPY packages_single_cell.R /Rscripts/
 # RUN Rscript /Rscripts/packages_single_cell.R
