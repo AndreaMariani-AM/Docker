@@ -24,6 +24,7 @@ packages_to_install <- c(
   'org.Mm.eg.db',
   'ReactomePA',
   'rGREAT',
+  'plyranges',
   'Rmagic',
   'Rsamtools',
   'Rsubread',
