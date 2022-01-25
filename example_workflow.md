@@ -52,7 +52,7 @@ docker push tag/image:anything
 docker rmi tagged/image
 ``` 
 
-They're actually quite heavy (~ 8gb for ChIPseq and depending on the number of packages in it), so when building multiple images or different versions of them it's worth to keep an eye on memory space.
+They're actually quite heavy (~ 8gb for ChIPseq and depending on the number of packages in it), so when building multiple images or different versions of them it's worth to keep an eye out on memory space.
 
 * Pull the image to the cluster
 
