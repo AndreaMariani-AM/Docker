@@ -94,4 +94,4 @@ The only difference is that I write packages in different files based on either 
 
 # Interactive way
 
-* This is probably the smartest solution, aka opening a container and working directly in it to debug softwares incompatibilities. It's useful for testing if certian R packages can be installed succesfully or other packages.
+* This is probably the smartest solution, aka opening a container and working directly in it to debug softwares incompatibilities. It's useful for testing if certian R/other packages can be installed succesfully. This will immediatly point out missing libs and other dependencies.
