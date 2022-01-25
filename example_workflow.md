@@ -59,7 +59,7 @@ They're actually quite heavy (~ 8gb for ChIPseq and depending on the number of p
 ```
 singularity pull name_of_image.sif docker://username/image:tag
 ```
-From any directory, pull the docker image. The command `pull` takes a docker image and create a copy as a singularity image. `.sif` is the extension of singularity iamges `name_of_image` can be anything and can be != from the docker image. `docker:// ` tells singularity that we're downloading a docker image, otherwise i'll search for it on singularity repos.
+From any directory, pull the docker image. The command `pull` takes a docker image and create a copy as a singularity image. `.sif` is the extension of singularity images `name_of_image` can be anything and can be != from the docker image name. `docker:// ` tells singularity that we're downloading a docker image, otherwise i'll search for it on singularity repos.
 
 * Notes on the workflow
 
