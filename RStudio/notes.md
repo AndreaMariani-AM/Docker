@@ -4,9 +4,7 @@ Makefile tells Make how to behave and how to compile and link a program.
 
 A Makevars file is a makefile and is used as one of several makefiles by R CMD SHLIB (which is called by R CMD INSTALL to compile code in the src directory)
 The most common use of a Makevars file is to set additional preprocessor options (for example include paths and definitions) for C/C++
-These are `implicit` variables and tell `Make` how to use customary techniques so that i don't have to specify them in details when i want to use them. Dictate what compiler
-
-should be used and what options are available
+These are `implicit` variables and tell `Make` how to use customary techniques so that i don't have to specify them in details when i want to use them. Dictate what compiler should be used and what options are available
 
 VER=
 CCACHE=ccache
