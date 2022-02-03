@@ -22,7 +22,7 @@ C++11 and 14 are compilation standards for the C++ language, kinda different ver
 CXX11=$(CCACHE) g++$(VER)
 
 CXX14=$(CCACHE) g++$(VER)
-## FC Program for compiling or preprocessing Fortran and Ratfor programs; default ‘f77’.
+FC Program for compiling or preprocessing Fortran and Ratfor programs; default ‘f77’.
 
 FC=$(CCACHE) gfortran$(VER)
 
