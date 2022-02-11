@@ -33,7 +33,8 @@ packages_to_install <- c(
   'TSCAN',
   'TxDb.Hsapiens.UCSC.hg38.knownGene',
   'TxDb.Mmusculus.UCSC.mm10.knownGene',
-  'tximport'
+  'tximport',
+  'Repitools'
 )
 
 install_packages(packages_to_install)
