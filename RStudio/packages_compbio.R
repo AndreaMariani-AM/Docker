@@ -3,9 +3,9 @@ source('/Rscripts/install_packages_function.R')
 # packages for compbio
 packages_to_install <- c(
   'bedr',
-  'biomaRt', #zlibbioc, s4vectors, biobase
-  # 'BSgenome.Hsapiens.UCSC.hg19',
-  # 'BSgenome.Mmusculus.UCSC.mm10',
+  'biomaRt',
+  'BSgenome.Hsapiens.UCSC.hg19',
+  'BSgenome.Mmusculus.UCSC.mm10',
   'ChIPseeker',
   'clusterProfiler',
   'DelayedArray',
