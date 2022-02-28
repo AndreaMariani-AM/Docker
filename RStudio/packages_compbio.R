@@ -34,7 +34,8 @@ packages_to_install <- c(
   'TxDb.Hsapiens.UCSC.hg38.knownGene',
   'TxDb.Mmusculus.UCSC.mm10.knownGene',
   'tximport',
-  'Repitools'
+  'Repitools',
+  'memes'
 )
 
 install_packages(packages_to_install)
