@@ -41,6 +41,7 @@ COPY ccache.conf /root/.ccache/
 # libfftw3-dev                           heatmaps (R package)
 # libglpk-dev                            FlowSOM (R package)
 # libpoppler-cpp-dev                     pdftools (R package)
+# libgit2-devel				 git2r (package)
 ##===========================================##===========================================##
 
 RUN apt-get --quiet update -y \
