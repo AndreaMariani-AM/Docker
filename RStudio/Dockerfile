@@ -1,4 +1,4 @@
-FROM andreamariani/rstudio_base:latest
+FROM rocker/rstudio:latest
 
 ##===========================================##===========================================##
 # ENV are environment variables, and can be interpreted by the dockerfile. Seems like that this is discouraged cause it'll persist in the finale image, and it's always noninteractive
