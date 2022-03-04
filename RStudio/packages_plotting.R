@@ -39,7 +39,8 @@ packages_to_install <- c(
   'UpSetR',
   'VennDiagram',
   'viridis',
-  'wesanderson'
+  'wesanderson',
+  'karyoploteR'
 )
 
 install_packages(packages_to_install)
