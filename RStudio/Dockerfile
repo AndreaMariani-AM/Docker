@@ -191,6 +191,8 @@ RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
 && make \
 && make install
 
+ENV PATH "$PATH:/bwtool"
+
 RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
 
 RUN mkdir /Rscripts
