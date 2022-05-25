@@ -13,7 +13,7 @@ docker build --progress=plain --no-cache -t andreamariani/rstudio:${IMAGE_VERSIO
 docker push andreamariani/rstudio:${IMAGE_VERSION}
 docker push andreamariani/rstudio:latest
 
-# USE THIS LINES ONLY WHEN EVERYTHING WORKS. Below is for testing.
+# USE THESE LINES ONLY WHEN EVERYTHING WORKS. Below is for testing.
 
 
 ##===========================================##===========================================##

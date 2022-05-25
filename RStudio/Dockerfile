@@ -41,6 +41,7 @@ COPY ccache.conf /root/.ccache/
 # libfftw3-dev                           heatmaps (R package)
 # libglpk-dev                            FlowSOM (R package)
 # libpoppler-cpp-dev                     pdftools (R package)
+# libgit2-devel				 git2r (package)
 ##===========================================##===========================================##
 
 RUN apt-get --quiet update -y \
@@ -189,6 +190,8 @@ RUN git clone 'https://github.com/CRG-Barcelona/bwtool' \
 && ./configure --prefix=$HOME CFLAGS='-I../libbeato -I../zlib' LDFLAGS='-L../libbeato/jkweb -L../libbeato/beato -L../zlib' \
 && make \
 && make install
+
+ENV PATH "$PATH:/bwtool"
 
 RUN Rscript -e 'install.packages("BiocManager", repos = "http://cran.us.r-project.org")'
 

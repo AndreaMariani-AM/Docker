@@ -45,7 +45,8 @@ packages_to_install <- c(
   'uwot',
   'workflowr',
   'XML',
-  'xml2'
+  'xml2',
+  'ropensci/git2r'
 )
 
 install_packages(packages_to_install)
