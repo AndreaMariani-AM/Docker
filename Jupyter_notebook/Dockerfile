@@ -1,4 +1,4 @@
-FROM rocker/rstudio:latest
+FROM jupyter/tensorflow-notebook
 
 ##===========================================##===========================================##
 # ENV are environment variables, and can be interpreted by the dockerfile. Seems like that this is discouraged cause it'll persist in the finale image, and it's always noninteractive
