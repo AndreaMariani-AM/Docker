@@ -37,14 +37,14 @@ packages_to_install <- c(
 
 install_packages(packages_to_install)
 
-# alternative location for R packagesq
+# alternative location for R packages
 place_for_other_libraries <- '/other_R_libraries'
 dir.create(place_for_other_libraries, recursive = TRUE)
 
-# Seurat 2.3.4
+# Seurat 4.1.1
 devtools::install_version(
   'Seurat',
-  version = '2.3.4',
+  version = '4.1.1',
   repos = 'http://cran.us.r-project.org',
   lib = place_for_other_libraries,
   quiet = TRUE

@@ -209,8 +209,8 @@ RUN Rscript /Rscripts/packages_plotting.R
 COPY packages_compbio.R /Rscripts/
 RUN Rscript /Rscripts/packages_compbio.R
 
-# COPY packages_single_cell.R /Rscripts/
-# RUN Rscript /Rscripts/packages_single_cell.R
+COPY packages_single_cell.R /Rscripts/
+RUN Rscript /Rscripts/packages_single_cell.R
 
-# COPY packages_single_cell_experimental.R /Rscripts/
-# RUN Rscript /Rscripts/packages_single_cell_experimental.R
+COPY packages_single_cell_experimental.R /Rscripts/
+RUN Rscript /Rscripts/packages_single_cell_experimental.R
