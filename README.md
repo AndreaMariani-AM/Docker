@@ -5,6 +5,6 @@ From these Docker images i will create singularity images that will work with sn
 
 ## Under development
 - WGBSeq
-- HiC
--Jupyter notebook
+- HiC 
+- Jupyter notebook
 
